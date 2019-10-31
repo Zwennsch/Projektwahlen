@@ -37,7 +37,19 @@ public class MainWahl {
 		System.out.println("Bitte richten Sie nun die " +total+ " Kurse ein:");
 		
 		System.out.println("Bitte geben Sie nacheinander alle Kurse an.\nJedem Kurs wird automatisch eine Nummer zugeordent");
-//		for
+		
+		for(int i = 0; i < total; i++) {
+			System.out.println("Kurs Nr. "+ id++ + ": ");
+			try {
+				String c = br.readLine();
+//				System.out.println();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+
 	}
 	
 	
