@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 
+import javafx.application.Application;
+
 
 public class MainWahl {
 	static final int MINIMUM_NUMBER_OF_COURSES = 10;
@@ -13,12 +15,17 @@ public class MainWahl {
 	public static Map<Integer, String> kurse = new HashMap<>();  
 
 	public static void main(String[] args) {
-		fillTheList();
+		startUI(args);
+//		fillTheList();
 //		while(!alleGewählt) {
 //			startNewSchueler();
 //			
 //		}
 		
+	}
+
+	private static void startUI(String[] args) {
+		Application.launch(FxMain.class, args);
 	}
 
 	private static void fillTheList() {

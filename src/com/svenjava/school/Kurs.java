@@ -8,12 +8,12 @@ public class Kurs {
 	private String name;
 	private List<Schueler> attendents;
 	private int maxSize;
-	private int size;
 	
-	public Kurs(String name) {
+	public Kurs(String name, int maxSize) {
 		this.name = name;
 		totalNumberOfCourses++;
 		this.attendents = new ArrayList<>();
+		this.maxSize = maxSize;
 	}
 	
 	public int getTotalNumberOfCourses() {
@@ -25,6 +25,7 @@ public class Kurs {
 	
 	public void addSchuelerToKurs(Schueler schueler) {
 		attendents.add(schueler);
+		
 	}
 	
 	public int getMaxSize() {
