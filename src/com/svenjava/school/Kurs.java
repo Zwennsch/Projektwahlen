@@ -16,7 +16,7 @@ public class Kurs {
 		this.maxSize = maxSize;
 	}
 	
-	public int getTotalNumberOfCourses() {
+	public static int getTotalNumberOfCourses() {
 		return totalNumberOfCourses;
 	}
 	public List<Schueler> getSchueler(){
@@ -27,12 +27,20 @@ public class Kurs {
 		attendents.add(schueler);
 		
 	}
+//	public Kurs getKursByName(String name) {
+//		return.
+//	}
 	
 	public int getMaxSize() {
 		return this.maxSize;
 	}
 	public int getActualSize() {
 		return attendents.size();
+	}
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return this.name;
 	}
 
 }

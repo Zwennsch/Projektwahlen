@@ -1,0 +1,7 @@
+Kurs1,20
+Kurs2,23
+Kurs3,15
+Kurs4,16
+Kurs5,19
+Schwimmen,22
+Programmieren,12

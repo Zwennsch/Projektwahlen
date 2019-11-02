@@ -4,20 +4,41 @@ public class Schueler {
 	
 	private static int totalNumber = 0;
 	private int id;
-	private String name;
+	private String vorname;
+	private String nachname;
 	private Klassenstufe stufe;
 	private Wahl wahl;
 	
 	static { 
 		totalNumber = 0;
 	}
-	public Schueler(String name, Klassenstufe klasse) {
+	public Schueler(String vorname,String nachname,  Klassenstufe klasse, Wahl wahl) {
 		this.id = totalNumber++;
-		this.name = name;
+		this.vorname = vorname;
+		this.nachname = nachname;
+		this.wahl = wahl;
+	}
+	public Schueler(String vorname,String nachname,  Klassenstufe klasse) {
+		this.id = totalNumber++;
+		this.vorname = vorname;
+		this.nachname = nachname;
+		this.stufe = klasse;
 	}
 	
-	public void makeWahl(int wahl1, int wahl2, int wahl3) {
-		
+	public void makeWahl(Wahl w) {
+		this.wahl = w;
+	}
+	
+	
+	public Wahl getWahl() {
+		return this.wahl;
+	}
+	
+	public String getName() {
+		return this.vorname + " " + this.nachname;
+	}
+	public Klassenstufe getKlassenstufe() {
+		return this.stufe;
 	}
 	
 	
