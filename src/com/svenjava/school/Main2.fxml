@@ -8,6 +8,7 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -31,7 +32,7 @@
                      <children>
                         <VBox alignment="CENTER" layoutX="14.0" layoutY="-21.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
                            <children>
-                              <TextField fx:id="vorname" focusTraversable="false" promptText="Vorname">
+                              <TextField fx:id="vorname" focusTraversable="false" onAction="#loadList" onContextMenuRequested="#loadList" promptText="Vorname">
                                  <VBox.margin>
                                     <Insets left="2.0" />
                                  </VBox.margin>
@@ -57,9 +58,12 @@
                         </Label>
                         <VBox layoutX="14.0" layoutY="30.0" spacing="15.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="30.0">
                            <children>
-                              <RadioButton mnemonicParsing="false" text="8" />
-                              <RadioButton mnemonicParsing="false" text="9" />
-                              <RadioButton mnemonicParsing="false" text="10" />
+                              <RadioButton fx:id="rbEight" mnemonicParsing="false" onAction="#showListCB1" text="8">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="tgStufen" />
+                                 </toggleGroup></RadioButton>
+                              <RadioButton fx:id="rbNine" mnemonicParsing="false" text="9" toggleGroup="$tgStufen" />
+                              <RadioButton fx:id="rbTen" mnemonicParsing="false" text="10" toggleGroup="$tgStufen" />
                            </children>
                            <padding>
                               <Insets top="5.0" />
@@ -81,9 +85,9 @@
                   <Insets bottom="2.0" />
                </VBox.margin>
                <children>
-                  <ChoiceBox prefWidth="150.0" HBox.hgrow="ALWAYS" />
-                  <ChoiceBox prefWidth="150.0" HBox.hgrow="ALWAYS" />
-                  <ChoiceBox prefWidth="150.0" HBox.hgrow="ALWAYS" />
+                  <ChoiceBox fx:id="cbErstwahl" prefWidth="150.0" HBox.hgrow="ALWAYS" />
+                  <ChoiceBox fx:id="cbZweitwahl" prefWidth="150.0" HBox.hgrow="ALWAYS" />
+                  <ChoiceBox fx:id="cbDrittwahl" prefWidth="150.0" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
             <Button mnemonicParsing="false" onAction="#fillInPupil" text="Eingabe bestätigen!">
