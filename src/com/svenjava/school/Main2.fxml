@@ -85,9 +85,36 @@
                   <Insets bottom="2.0" />
                </VBox.margin>
                <children>
-                  <ChoiceBox fx:id="cbErstwahl" prefWidth="150.0" HBox.hgrow="ALWAYS" />
-                  <ChoiceBox fx:id="cbZweitwahl" prefWidth="150.0" HBox.hgrow="ALWAYS" />
-                  <ChoiceBox fx:id="cbDrittwahl" prefWidth="150.0" HBox.hgrow="ALWAYS" />
+                  <VBox alignment="TOP_CENTER">
+                     <children>
+                        <Label text="1. Wahl">
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <ChoiceBox fx:id="cbErstwahl" prefWidth="150.0" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER">
+                     <children>
+                        <Label alignment="TOP_CENTER" text="2. Wahl" textAlignment="CENTER">
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <ChoiceBox fx:id="cbZweitwahl" prefWidth="150.0" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER">
+                     <children>
+                        <Label text="3. Wahl">
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <ChoiceBox fx:id="cbDrittwahl" prefWidth="150.0" />
+                     </children>
+                  </VBox>
                </children>
             </HBox>
             <Button mnemonicParsing="false" onAction="#fillInPupil" text="Eingabe bestätigen!">
