@@ -49,6 +49,8 @@ public class FxMain extends Application {
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
 		stage.setTitle("WP-Kurswahl");
+		stage.setResizable(false);
+		
 		stage.show();
 		
 	}

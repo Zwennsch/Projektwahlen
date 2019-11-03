@@ -14,8 +14,8 @@ import javafx.scene.control.ToggleGroup;
 
 public class Controller {
 	Map<Schueler, Integer> schuelerList = new HashMap<>();
-	
 	List<Kurs> courses = FxMain.coursesList;
+	private int added;
 	
 	@FXML
 	TextField vorname;
@@ -35,9 +35,13 @@ public class Controller {
 	
 	@FXML
 	private void fillInPupil(ActionEvent e) {
+//		checkForCorrectName();
+//		checkForKlasse();
 		System.out.println("Button gedrueckt");
 		String name = vorname.getText();
 		String nachN = nachname.getText();
+//		Klassenstufe s;
+//		s.
 		Schueler s = new Schueler(name, nachN, Klassenstufe.ACHT );
 		Kurs k1 = cbErstwahl.getValue();
 		Kurs k2 = cbZweitwahl.getValue();
@@ -45,15 +49,18 @@ public class Controller {
 		Wahl w = new Wahl(k1, k2, k3, s);
 		s.makeWahl(w);
 		System.out.println(w);
-		System.out.println(rbEight.isSelected()+ " " + rbNine.isSelected()+ " "+ rbTen.isSelected());
 		
 	}
 	@FXML
 	private void showListCB1(ActionEvent e) {
+		added++;
+		
 		System.out.println("showing");
-		cbErstwahl.getItems().addAll(courses);
-		cbZweitwahl.getItems().addAll(courses);
-		cbDrittwahl.getItems().addAll(courses);
+		if(added == 1) {
+			cbErstwahl.getItems().addAll(courses);
+			cbZweitwahl.getItems().addAll(courses);
+			cbDrittwahl.getItems().addAll(courses);
+		}
 	}
 	
 

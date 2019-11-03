@@ -62,8 +62,8 @@
                                  <toggleGroup>
                                     <ToggleGroup fx:id="tgStufen" />
                                  </toggleGroup></RadioButton>
-                              <RadioButton fx:id="rbNine" mnemonicParsing="false" text="9" toggleGroup="$tgStufen" />
-                              <RadioButton fx:id="rbTen" mnemonicParsing="false" text="10" toggleGroup="$tgStufen" />
+                              <RadioButton fx:id="rbNine" mnemonicParsing="false" onAction="#showListCB1" text="9" toggleGroup="$tgStufen" />
+                              <RadioButton fx:id="rbTen" mnemonicParsing="false" onAction="#showListCB1" text="10" toggleGroup="$tgStufen" />
                            </children>
                            <padding>
                               <Insets top="5.0" />
