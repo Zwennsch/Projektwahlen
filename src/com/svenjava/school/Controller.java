@@ -40,13 +40,14 @@ public class Controller {
 		System.out.println("Button gedrueckt");
 		String name = vorname.getText();
 		String nachN = nachname.getText();
-//		Klassenstufe s;
-//		s.
+		Klassenstufe stufe;
+//		if(rbEight.)
 		Schueler s = new Schueler(name, nachN, Klassenstufe.ACHT );
 		Kurs k1 = cbErstwahl.getValue();
 		Kurs k2 = cbZweitwahl.getValue();
 		Kurs k3 = cbDrittwahl.getValue();
 		Wahl w = new Wahl(k1, k2, k3, s);
+//		InputChecker.isValid(name, nachN, stufe, w );
 		s.makeWahl(w);
 		System.out.println(w);
 		
