@@ -40,16 +40,25 @@ public class Controller {
 		System.out.println("Button gedrueckt");
 		String name = vorname.getText();
 		String nachN = nachname.getText();
-		Klassenstufe stufe;
-//		if(rbEight.)
-		Schueler s = new Schueler(name, nachN, Klassenstufe.ACHT );
+		Klassenstufe stufe ;
+		String stufeString = ((RadioButton) tgStufen.getSelectedToggle()).getText();
 		Kurs k1 = cbErstwahl.getValue();
 		Kurs k2 = cbZweitwahl.getValue();
 		Kurs k3 = cbDrittwahl.getValue();
-		Wahl w = new Wahl(k1, k2, k3, s);
-//		InputChecker.isValid(name, nachN, stufe, w );
-		s.makeWahl(w);
-		System.out.println(w);
+		if(InputChecker.isValid(name, nachN, stufeString, k1,k2,k3)){
+			System.out.println("Wahl korrekt");
+			if(stufeString.equals("8")) {
+				stufe = Klassenstufe.ACHT;
+			}else if(stufeString.equals("9")) {
+				stufe = Klassenstufe.NEUN;
+			}else {
+				stufe = Klassenstufe.ZEHN;
+			}
+			Schueler s = new Schueler(name, nachN, stufe);
+			Wahl w = new Wahl(k1, k2, k3, s);
+			s.makeWahl(w);
+			System.out.println(w);
+		}
 		
 	}
 	@FXML
