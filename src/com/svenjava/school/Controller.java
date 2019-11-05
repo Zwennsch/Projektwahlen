@@ -7,6 +7,8 @@ import java.util.Map;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
@@ -16,6 +18,11 @@ public class Controller {
 	Map<Schueler, Integer> schuelerList = new HashMap<>();
 	List<Kurs> courses = FxMain.coursesList;
 	private int added;
+	
+//	@FXML
+	Alert confirmation = new Alert(AlertType.CONFIRMATION);
+	Alert confirmed  = new Alert(AlertType.INFORMATION);
+	
 	
 	@FXML
 	TextField vorname;
@@ -45,6 +52,7 @@ public class Controller {
 		Kurs k1 = cbErstwahl.getValue();
 		Kurs k2 = cbZweitwahl.getValue();
 		Kurs k3 = cbDrittwahl.getValue();
+		confirmation.show();
 		if(InputChecker.isValid(name, nachN, stufeString, k1,k2,k3)){
 			System.out.println("Wahl korrekt");
 			if(stufeString.equals("8")) {
@@ -58,6 +66,8 @@ public class Controller {
 			Wahl w = new Wahl(k1, k2, k3, s);
 			s.makeWahl(w);
 			System.out.println(w);
+			confirmed.setContentText("Eingabe gespeicher!");
+			confirmed.show();
 		}
 		
 	}
