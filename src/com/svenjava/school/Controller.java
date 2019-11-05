@@ -1,9 +1,9 @@
 package com.svenjava.school;
 
-import java.awt.event.MouseAdapter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,17 +12,18 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 
 public class Controller {
 	Map<Schueler, Integer> schuelerList = new HashMap<>();
 	List<Kurs> courses = FxMain.coursesList;
+	String name, nachN;
 	private int added;
 	
 //	@FXML
-	Alert confirmation = new Alert(AlertType.CONFIRMATION);
 	Alert confirmed  = new Alert(AlertType.INFORMATION);
-	
+	Alert wrongEntry = new Alert(AlertType.ERROR);
 	
 	@FXML
 	TextField vorname;
@@ -39,37 +40,53 @@ public class Controller {
 	ChoiceBox<Kurs> cbZweitwahl; 
 	@FXML
 	ChoiceBox<Kurs> cbDrittwahl; 
+	Toggle standard = rbEight;
 	
 	@FXML
 	private void fillInPupil(ActionEvent e) {
-//		checkForCorrectName();
-//		checkForKlasse();
-		System.out.println("Button gedrueckt");
-		String name = vorname.getText();
-		String nachN = nachname.getText();
+		name = vorname.getText();
+		nachN = nachname.getText();
 		Klassenstufe stufe ;
 		String stufeString = ((RadioButton) tgStufen.getSelectedToggle()).getText();
 		Kurs k1 = cbErstwahl.getValue();
 		Kurs k2 = cbZweitwahl.getValue();
 		Kurs k3 = cbDrittwahl.getValue();
-		confirmation.show();
 		if(InputChecker.isValid(name, nachN, stufeString, k1,k2,k3)){
-			System.out.println("Wahl korrekt");
-			if(stufeString.equals("8")) {
-				stufe = Klassenstufe.ACHT;
-			}else if(stufeString.equals("9")) {
-				stufe = Klassenstufe.NEUN;
-			}else {
-				stufe = Klassenstufe.ZEHN;
-			}
+			stufe = getStufe(stufeString);
 			Schueler s = new Schueler(name, nachN, stufe);
 			Wahl w = new Wahl(k1, k2, k3, s);
 			s.makeWahl(w);
 			System.out.println(w);
-			confirmed.setContentText("Eingabe gespeicher!");
+			confirmed.setContentText("Eingabe gespeichert!\nNächster Schüler bitte!");
 			confirmed.show();
+			clearScreenForNewEntry();
+		}else {
+			wrongEntry.setContentText("Falsche Eingabe!\nBitte korrigieren Sie die Eingabe");
+			wrongEntry.show();
 		}
 		
+	}
+	
+	
+	
+	private void clearScreenForNewEntry() {
+		vorname.setText("");
+		nachname.setText("");
+		tgStufen.selectToggle(standard);
+	}
+
+
+
+	private Klassenstufe getStufe(String stufeString) {
+		Klassenstufe stufe;
+		if(stufeString.equals("8")) {
+			stufe = Klassenstufe.ACHT;
+		}else if(stufeString.equals("9")) {
+			stufe = Klassenstufe.NEUN;
+		}else {
+			stufe = Klassenstufe.ZEHN;
+		}
+		return stufe;
 	}
 	@FXML
 	private void showListCB1(ActionEvent e) {
