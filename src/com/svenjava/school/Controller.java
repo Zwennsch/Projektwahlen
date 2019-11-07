@@ -17,33 +17,27 @@ import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 
 public class Controller {
-	Map<Schueler, Integer> schuelerList = new HashMap<>();
 	List<Kurs> courses = FxMain.coursesList;
-	String name, nachN;
+	private String name, nachN;
 	private int added;
 	
 	
 	@FXML
-	TextField vorname;
+	private TextField vorname, nachname;
 	@FXML
-	TextField nachname;
-	@FXML
-	RadioButton rbEight, rbNine, rbTen;
+	private RadioButton rbEight, rbNine, rbTen;
 //	This works even without setting the ToggleGroup here. It looks for the binding in the fxml file
 	@FXML
-	ToggleGroup tgStufen;
+	private ToggleGroup tgStufen;
 	@FXML
-	ChoiceBox<Kurs> cbErstwahl; 
+	private ChoiceBox<Kurs> cbErstwahl, cbZweitwahl, cbDrittwahl; 
 	@FXML
-	ChoiceBox<Kurs> cbZweitwahl; 
-	@FXML
-	ChoiceBox<Kurs> cbDrittwahl; 
-	@FXML
-	MenuItem saveMenu, finishMenu;
+	private MenuItem saveMenu, finishMenu;
 	
 	Toggle standard = rbEight;
 	Alert confirmed  = new Alert(AlertType.INFORMATION);
 	Alert wrongEntry = new Alert(AlertType.ERROR);
+	
 	@FXML
 	private void fillInPupil(ActionEvent e) {
 		name = vorname.getText();
