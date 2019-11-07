@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
@@ -21,9 +22,6 @@ public class Controller {
 	String name, nachN;
 	private int added;
 	
-//	@FXML
-	Alert confirmed  = new Alert(AlertType.INFORMATION);
-	Alert wrongEntry = new Alert(AlertType.ERROR);
 	
 	@FXML
 	TextField vorname;
@@ -40,8 +38,12 @@ public class Controller {
 	ChoiceBox<Kurs> cbZweitwahl; 
 	@FXML
 	ChoiceBox<Kurs> cbDrittwahl; 
-	Toggle standard = rbEight;
+	@FXML
+	MenuItem saveMenu, finishMenu;
 	
+	Toggle standard = rbEight;
+	Alert confirmed  = new Alert(AlertType.INFORMATION);
+	Alert wrongEntry = new Alert(AlertType.ERROR);
 	@FXML
 	private void fillInPupil(ActionEvent e) {
 		name = vorname.getText();
@@ -98,6 +100,14 @@ public class Controller {
 			cbZweitwahl.getItems().addAll(courses);
 			cbDrittwahl.getItems().addAll(courses);
 		}
+	}
+	@FXML
+	private void saveState(ActionEvent e) {
+		System.out.println("Saving");
+	}
+	@FXML
+	private void calculateCourses(ActionEvent e) {
+		System.out.println("Calculating");
 	}
 	
 

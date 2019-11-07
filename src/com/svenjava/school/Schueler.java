@@ -1,5 +1,9 @@
 package com.svenjava.school;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 public class Schueler {
 	
 	private static int totalNumber = 0;
@@ -8,6 +12,7 @@ public class Schueler {
 	private String nachname;
 	private Klassenstufe stufe;
 	private Wahl wahl;
+	static Map<Schueler, Wahl> alleSchueler;
 	
 	static { 
 		totalNumber = 0;
@@ -40,6 +45,12 @@ public class Schueler {
 	public Klassenstufe getKlassenstufe() {
 		return this.stufe;
 	}
+	public String getVorname() {
+		return this.vorname;
+	}
+	public String getNachname() {
+		return this.nachname;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -59,6 +70,18 @@ public class Schueler {
 		if (id != other.id)
 			return false;
 		return true;
+	}
+	
+	public static Schueler getSchuelerByName(String vorname, String nachname) {
+		Schueler s = null;
+		for(Map.Entry<Schueler, Wahl> entry : alleSchueler.entrySet()) {
+			if(entry.getKey().getVorname().equals(vorname)) {
+				if(entry.getKey().getNachname().equals(nachname)) {
+					return entry.getKey();
+				}
+			}
+		}
+		return s;
 	}
 	
 	
