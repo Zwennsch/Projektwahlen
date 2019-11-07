@@ -17,7 +17,6 @@ import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 
 public class Controller {
-	List<Kurs> courses = FxMain.coursesList;
 	private String name, nachN;
 	private int added;
 	
@@ -68,7 +67,7 @@ public class Controller {
 	private void clearScreenForNewEntry() {
 		vorname.setText("");
 		nachname.setText("");
-		tgStufen.selectToggle(standard);
+		tgStufen.selectToggle(rbEight);
 	}
 
 
@@ -90,9 +89,9 @@ public class Controller {
 		
 		System.out.println("showing");
 		if(added == 1) {
-			cbErstwahl.getItems().addAll(courses);
-			cbZweitwahl.getItems().addAll(courses);
-			cbDrittwahl.getItems().addAll(courses);
+			cbErstwahl.getItems().addAll(FxMain.coursesList);
+			cbZweitwahl.getItems().addAll(FxMain.coursesList);
+			cbDrittwahl.getItems().addAll(FxMain.coursesList);
 		}
 	}
 	@FXML
