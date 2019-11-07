@@ -22,7 +22,7 @@ public class FxMain extends Application {
 		// TODO Auto-generated method stub
 		super.init();
 		loadCourses();
-		Schueler.alleSchueler = new HashMap<Schueler, Wahl>();
+		Schueler.alleSchueler = new ArrayList<Schueler>();
 	}
 
 	private void loadCourses() throws IOException {
@@ -40,8 +40,7 @@ public class FxMain extends Application {
 			e.printStackTrace();
 			System.out.println("Datei nicht gefunden!");
 		}
-		System.out.println(coursesList.get(2).getMaxSize());
-		System.out.println(Kurs.getTotalNumberOfCourses());
+		System.out.println("Anzahl geladener Kurse: " +Kurs.getTotalNumberOfCourses());
 		
 	}
 

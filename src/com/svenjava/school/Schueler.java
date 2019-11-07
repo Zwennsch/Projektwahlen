@@ -1,6 +1,7 @@
 package com.svenjava.school;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -12,7 +13,7 @@ public class Schueler {
 	private String nachname;
 	private Klassenstufe stufe;
 	private Wahl wahl;
-	static Map<Schueler, Wahl> alleSchueler;
+	static List<Schueler> alleSchueler;
 	
 	static { 
 		totalNumber = 0;
@@ -71,16 +72,22 @@ public class Schueler {
 			return false;
 		return true;
 	}
+	@Override
+	public String toString() {
+		return this.vorname + " " +this.nachname + " id:" + this.id;
+	}
 	
 	public static Schueler getSchuelerByName(String vorname, String nachname) {
 		Schueler s = null;
-		for(Map.Entry<Schueler, Wahl> entry : alleSchueler.entrySet()) {
-			if(entry.getKey().getVorname().equals(vorname)) {
-				if(entry.getKey().getNachname().equals(nachname)) {
-					return entry.getKey();
+		for(Schueler t : alleSchueler) {
+			if( t.getVorname().equals(vorname)) {
+				if(t.getNachname().equals(nachname)) {
+					return t;
 				}
 			}
+			
 		}
+
 		return s;
 	}
 	

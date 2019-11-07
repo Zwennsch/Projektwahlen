@@ -50,7 +50,7 @@
                      <children>
                         <VBox alignment="CENTER" layoutX="14.0" layoutY="-21.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
                            <children>
-                              <TextField fx:id="vorname" focusTraversable="false" onAction="#loadList" onContextMenuRequested="#loadList" promptText="Vorname">
+                              <TextField fx:id="vorname" focusTraversable="false" promptText="Vorname">
                                  <VBox.margin>
                                     <Insets left="2.0" />
                                  </VBox.margin>
@@ -76,12 +76,12 @@
                         </Label>
                         <VBox layoutX="14.0" layoutY="30.0" spacing="15.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="30.0">
                            <children>
-                              <RadioButton fx:id="rbEight" mnemonicParsing="false" onAction="#showListCB1" text="8">
+                              <RadioButton fx:id="rbEight" mnemonicParsing="false" text="8">
                                  <toggleGroup>
                                     <ToggleGroup fx:id="tgStufen" />
                                  </toggleGroup></RadioButton>
-                              <RadioButton fx:id="rbNine" mnemonicParsing="false" onAction="#showListCB1" text="9" toggleGroup="$tgStufen" />
-                              <RadioButton fx:id="rbTen" mnemonicParsing="false" onAction="#showListCB1" text="10" toggleGroup="$tgStufen" />
+                              <RadioButton fx:id="rbNine" mnemonicParsing="false" text="9" toggleGroup="$tgStufen" />
+                              <RadioButton fx:id="rbTen" mnemonicParsing="false" text="10" toggleGroup="$tgStufen" />
                            </children>
                            <padding>
                               <Insets top="5.0" />
