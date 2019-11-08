@@ -13,6 +13,8 @@ public class Schueler {
 	private String nachname;
 	private Klassenstufe stufe;
 	private Wahl wahl;
+	private Kurs finalCourse;
+
 	static List<Schueler> alleSchueler;
 	
 	static { 
@@ -91,6 +93,12 @@ public class Schueler {
 		return s;
 	}
 	
+	public Kurs getFinalCourse() {
+		return finalCourse;
+	}
+	public void setFinalCourse(Kurs finalCourse) {
+		this.finalCourse = finalCourse;
+	}
 	
 
 }

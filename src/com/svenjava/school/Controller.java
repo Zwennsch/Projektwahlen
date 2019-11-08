@@ -44,7 +44,6 @@ public class Controller {
 		cbDrittwahl.setValue(FxMain.coursesList.get(0));
 		tgStufen.selectToggle(rbEight);
 		confirmed.setContentText("Nächste(r) Schüler(in) bitte!");
-		confirmed.setHeaderText("Eintrag gespeichert");
 		wrongEntry.setContentText("Bitte korrigieren Sie die Eingabe");
 		wrongEntry.setHeaderText("Eingabe fehlerhaft");
 	}
@@ -64,6 +63,7 @@ public class Controller {
 			Wahl w = new Wahl(k1, k2, k3, s);
 			s.makeWahl(w);
 			Schueler.alleSchueler.add(s);
+			confirmed.setHeaderText("O.K. "+name+" ,Eintrag gespeichert");
 			confirmed.show();
 			clearScreenForNewEntry();
 		}else {
