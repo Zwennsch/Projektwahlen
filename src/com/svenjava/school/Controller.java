@@ -43,8 +43,10 @@ public class Controller {
 		cbZweitwahl.setValue(FxMain.coursesList.get(0));
 		cbDrittwahl.setValue(FxMain.coursesList.get(0));
 		tgStufen.selectToggle(rbEight);
-		confirmed.setContentText("Eingabe gespeichert!\nNächster Schüler bitte!");
-		wrongEntry.setContentText("Falsche Eingabe!\nBitte korrigieren Sie die Eingabe");
+		confirmed.setContentText("Nächste(r) Schüler(in) bitte!");
+		confirmed.setHeaderText("Eintrag gespeichert");
+		wrongEntry.setContentText("Bitte korrigieren Sie die Eingabe");
+		wrongEntry.setHeaderText("Eingabe fehlerhaft");
 	}
 	
 	@FXML
@@ -98,6 +100,8 @@ public class Controller {
 	private void calculateCourses(ActionEvent e) {
 		System.out.println("Calculating");
 		System.out.println(Schueler.alleSchueler.get(0));
+		new CourseCreator(Schueler.alleSchueler, FxMain.coursesList);
+		CourseCreator.calculateCourses();
 	}
 
 }
