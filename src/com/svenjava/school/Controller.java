@@ -60,7 +60,7 @@ public class Controller {
 		if(InputChecker.isValid(name, nachN, stufeString, k1,k2,k3)){
 			stufe = getStufe(stufeString);
 			Schueler s = new Schueler(name, nachN, stufe);
-			Wahl w = new Wahl(k1, k2, k3, s);
+			Wahl w = new Wahl(k1, k2, k3);
 			s.makeWahl(w);
 			Schueler.alleSchueler.add(s);
 			confirmed.setHeaderText("O.K. "+name+" ,Eintrag gespeichert");

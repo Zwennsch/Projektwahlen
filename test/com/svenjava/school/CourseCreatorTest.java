@@ -10,32 +10,47 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 class CourseCreatorTest {
+	static List<Schueler> schuelerList;
+	static List<Kurs> courseList;
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 		Random random = new Random();
-		List<Kurs> courseList = new ArrayList<>();
+		courseList = new ArrayList<>();
 		fillCourseList(courseList, random);
-		List<Schueler> schuelerList = new ArrayList<>();
+		schuelerList = new ArrayList<>();
 		fillSchuelerList(schuelerList, random, courseList);
 	}
 
 	private static void fillSchuelerList(List<Schueler> schuelerList, Random random, List<Kurs> courseList) {
-		// TODO Auto-generated method stub
-		/*
-		 * change, so that three different courses get picked,
-		 * pick a random Klasse from enum for eaćh person
-		 */
-		for (int i = 0; i < 200; i++) {
-			Kurs k1 = courseList.get(random.nextInt(courseList.size()));
-			Kurs k2 = courseList.get(random.nextInt(courseList.size()));
-			Kurs k3 = courseList.get(random.nextInt(courseList.size()));
-//			schuelerList.add(new Schueler("s"+i, "S"+i, klasse)
+		for (int i = 0; i < 300; i++) {
+			Wahl w = getThreeRandomCourses(random, courseList);
+			Klassenstufe stufe;
+			if(i < 100){
+				stufe = Klassenstufe.ACHT;
+			}else if(i >= 100 && i < 200) {
+				stufe = Klassenstufe.NEUN;
+			}else {
+				stufe = Klassenstufe.ZEHN;
+			}
+			Schueler s = new Schueler("vorname"+i, "nachname"+i, stufe, w);
+			schuelerList.add(s);
 		}
 		
+	}
+
+	private static Wahl getThreeRandomCourses(Random random, List<Kurs> courseList) {
+		List<Kurs> copy = new ArrayList<>(courseList);
+		Kurs k1 = copy.get(random.nextInt(copy.size()));
+		copy.remove(k1);
+		Kurs k2 = copy.get(random.nextInt(copy.size()));
+		copy.remove(k2);
+		Kurs k3 = copy.get(random.nextInt(copy.size()));
+		return new Wahl(k1, k2, k3);
 	}
 
 	private static void fillCourseList(List<Kurs> list, Random random) {
@@ -56,14 +71,19 @@ class CourseCreatorTest {
 	@AfterEach
 	void tearDown() throws Exception {
 	}
+	
 
 
 	@Test
 	void testCourseCreator() {
-		fail("Not yet implemented");
+		for(Schueler s : schuelerList) {
+			System.out.println(s + " ;" +s.getKlassenstufe()+ " ;"+ s.getWahl());
+		}
+		System.out.println(schuelerList.get(20).getKlassenstufe());
 	}
 
 	@Test
+	@Disabled
 	void testCalculateCourses() {
 		fail("Not yet implemented");
 	}
