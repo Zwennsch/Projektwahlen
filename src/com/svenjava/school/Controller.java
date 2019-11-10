@@ -65,6 +65,7 @@ public class Controller {
 			Schueler.alleSchueler.add(s);
 			confirmed.setHeaderText("O.K. "+name+" ,Eintrag gespeichert");
 			confirmed.show();
+			System.out.println(s.getKlassenstufe());
 			clearScreenForNewEntry();
 		}else {
 			wrongEntry.show();

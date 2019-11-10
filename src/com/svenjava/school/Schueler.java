@@ -25,6 +25,7 @@ public class Schueler {
 		this.vorname = vorname;
 		this.nachname = nachname;
 		this.wahl = wahl;
+		this.stufe = klasse;
 	}
 	public Schueler(String vorname,String nachname,  Klassenstufe klasse) {
 		this.id = totalNumber++;
