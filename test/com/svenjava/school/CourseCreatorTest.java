@@ -16,6 +16,7 @@ import org.junit.jupiter.api.Test;
 class CourseCreatorTest {
 	static List<Schueler> schuelerList;
 	static List<Kurs> courseList;
+	CourseCreator cc = new CourseCreator(schuelerList, courseList);
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -70,6 +71,19 @@ class CourseCreatorTest {
 
 	@AfterEach
 	void tearDown() throws Exception {
+	}
+	
+	@Test 
+	void testGenerateNthGrades () throws Exception{
+		List<Schueler> tenth = cc.createNthGraders(schuelerList, Klassenstufe.ZEHN);
+		Random r = new Random();
+		assertEquals(100, tenth.size(), "Should be 100");
+		assertEquals(Klassenstufe.ZEHN, tenth.get(r.nextInt(tenth.size())).getKlassenstufe());
+		assertEquals(Klassenstufe.ZEHN, tenth.get(r.nextInt(tenth.size())).getKlassenstufe());
+		assertEquals(Klassenstufe.ZEHN, tenth.get(r.nextInt(tenth.size())).getKlassenstufe());
+		assertEquals(Klassenstufe.ZEHN, tenth.get(r.nextInt(tenth.size())).getKlassenstufe());
+		assertEquals(Klassenstufe.ZEHN, tenth.get(r.nextInt(tenth.size())).getKlassenstufe());
+		assertEquals(Klassenstufe.ZEHN, tenth.get(r.nextInt(tenth.size())).getKlassenstufe());
 	}
 	
 

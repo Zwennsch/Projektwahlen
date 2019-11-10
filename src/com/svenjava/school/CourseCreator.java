@@ -30,7 +30,7 @@ public class CourseCreator {
 		firstExampleCourses = List.copyOf(courses);
 	}
 	
-	private List<Schueler> createNthGraders(List<Schueler> alle, Klassenstufe stufe) {
+	public List<Schueler> createNthGraders(List<Schueler> alle, Klassenstufe stufe) {
 		Predicate<Schueler> byGrade = schueler -> schueler.getKlassenstufe() == stufe;
 		return alle.stream().filter(byGrade).collect(Collectors.toList());
 	}
