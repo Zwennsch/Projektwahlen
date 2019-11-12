@@ -92,10 +92,17 @@ class CourseCreatorTest {
 //		make sure, that every tenth grader gets its first choice:
 		List<Kurs> firstWish = cc.fillInStudentsDependingOnWish(tenth);
 		System.out.println(firstWish.get(0));
-		System.out.println(firstWish.get(0).getSchueler());
+		System.out.println(firstWish.get(0).getSchueler().get(0).getWahl().erstWahl);
+		System.out.println(firstWish.get(1));
+		System.out.println(firstWish.get(1).getSchueler().get(1).getWahl().erstWahl);
+		for(Kurs c : firstWish) {
+			System.out.println(c + ": maximale Größe: "+ c.getMaxSize());
+			for( Schueler s : c.getSchueler()) {
+				System.out.println(s + "wählte erstwahl:" + s.getWahl().erstWahl);
+			}
+		}
 	}
 	
-
 
 	@Test
 	void testCourseCreator() {
