@@ -36,7 +36,7 @@ public class CourseCreator {
 	}
 	
 	public static void calculateCourses() {
-		List<Kurs> tenThDistibuted = distributeNthGraders(tenThgraders);
+		List<Kurs> coursesWithTenThDistibuted = distributeNthGraders(tenThgraders);
 	}
 
 	private static List<Kurs> distributeNthGraders(List<Schueler> schuelerList) {
@@ -44,7 +44,7 @@ public class CourseCreator {
 		return justWishes;
 	}
 
-	private static List<Kurs> fillInStudentsDependingOnWish(List<Schueler> schuelerList) {
+	static List<Kurs> fillInStudentsDependingOnWish(List<Schueler> schuelerList) {
 		for(Schueler s : schuelerList) {
 			Kurs course = s.getWahl().erstWahl;
 			Iterator<Kurs> iterator = firstExampleCourses.iterator();

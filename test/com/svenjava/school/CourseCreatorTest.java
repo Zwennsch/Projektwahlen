@@ -86,6 +86,15 @@ class CourseCreatorTest {
 		assertEquals(Klassenstufe.ZEHN, tenth.get(r.nextInt(tenth.size())).getKlassenstufe());
 	}
 	
+	@Test
+	void testFillInStudentsDependingOnWish() {
+		List<Schueler> tenth = cc.createNthGraders(schuelerList, Klassenstufe.ZEHN);
+//		make sure, that every tenth grader gets its first choice:
+		List<Kurs> firstWish = cc.fillInStudentsDependingOnWish(tenth);
+		System.out.println(firstWish.get(0));
+		System.out.println(firstWish.get(0).getSchueler());
+	}
+	
 
 
 	@Test
