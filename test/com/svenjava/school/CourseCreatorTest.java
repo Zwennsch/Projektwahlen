@@ -27,7 +27,7 @@ class CourseCreatorTest {
 		fillSchuelerList(schuelerList, random, courseList);
 	}
 
-	private static void fillSchuelerList(List<Schueler> schuelerList, Random random, List<Kurs> courseList) {
+	static void fillSchuelerList(List<Schueler> schuelerList, Random random, List<Kurs> courseList) {
 		for (int i = 0; i < 300; i++) {
 			Wahl w = getThreeRandomCourses(random, courseList);
 			Klassenstufe stufe;

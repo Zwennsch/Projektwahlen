@@ -40,6 +40,9 @@ public class Kurs {
 		}
 		return false;
 	}
+	public boolean isFull() {
+		return (this.getActualSize()>= this.maxSize);
+	}
 	
 	public int getMaxSize() {
 		return this.maxSize;

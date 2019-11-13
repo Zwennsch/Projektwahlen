@@ -21,6 +21,7 @@ import java.util.stream.Collectors;
  */
 public class CourseCreator {
 	
+	static List<Kurs> canBeFilledUpCourses;
 	static List<Schueler> tenThgraders;
 	List<Kurs> finalCourses;
 	private static List<Kurs> firstExampleCourses;
@@ -29,7 +30,12 @@ public class CourseCreator {
 	
 	public CourseCreator(List<Schueler> alleSchueler, List<Kurs>  courses) {
 		tenThgraders = createNthGraders(alleSchueler, Klassenstufe.ZEHN);
+		canBeFilledUpCourses = List.copyOf(courses);
 		firstExampleCourses = List.copyOf(courses);
+	}
+	
+	public static void calculateCourses() {
+		List<Kurs> coursesWithTenThDistibuted = distributeNthGraders(tenThgraders);
 	}
 	
 	public List<Schueler> createNthGraders(List<Schueler> alle, Klassenstufe stufe) {
@@ -37,16 +43,19 @@ public class CourseCreator {
 		return alle.stream().filter(byGrade).collect(Collectors.toList());
 	}
 	
-	public static void calculateCourses() {
-		List<Kurs> coursesWithTenThDistibuted = distributeNthGraders(tenThgraders);
-	}
 
 	private static List<Kurs> distributeNthGraders(List<Schueler> schuelerList) {
 		List<Kurs> justWishes = fillInStudentsDependingOnWish(schuelerList);
 		refactorIfCourseFull(justWishes);
 		return justWishes;
 	}
-
+/*
+ * I am still not sure on how to refactor as I can see two possible ways:
+ * 1. students who don't have their first wish fulfilled get put into the course with their second wish.
+ * 2. if this course will also be full, they could immediately be put into the course with their third wish
+ * 3. or it could be random choice from this now full course. This way other students might also loose their first choice...
+ * 
+ */
 	private static void refactorIfCourseFull(List<Kurs> justWishes) {
 		for(Kurs c : justWishes) {
 			if(c.getMaxSize() < c.getActualSize()) {
