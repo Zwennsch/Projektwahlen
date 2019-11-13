@@ -5,3 +5,8 @@ Kurs4,16
 Kurs5,19
 Schwimmen,22
 Programmieren,12
+Fußball,25
+Jugend debattiert,15
+Mindstorm,13
+Kurs11,10
+Kurs12,12

@@ -33,6 +33,13 @@ public class Kurs {
 //	public Kurs getKursByName(String name) {
 //		return.
 //	}
+	public boolean removeSchueler(Schueler s) {
+		if (attendents.contains(s)) {
+			attendents.remove(s);
+			return true;
+		}
+		return false;
+	}
 	
 	public int getMaxSize() {
 		return this.maxSize;

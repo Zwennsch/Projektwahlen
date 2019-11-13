@@ -54,7 +54,9 @@ public class CourseCreator {
 				List<Schueler> onlySecondWish = new ArrayList<>();
 				for(int i = 0; i < toMany ; i++) {
 					Collections.shuffle(c.getSchueler());
-					
+					Schueler s = c.getSchueler().get(0);
+					c.removeSchueler(s);
+					onlySecondWish.add(s);
 				}
 			}
 		}
