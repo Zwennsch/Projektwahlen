@@ -1,5 +1,7 @@
 package com.svenjava.school;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
@@ -41,7 +43,21 @@ public class CourseCreator {
 
 	private static List<Kurs> distributeNthGraders(List<Schueler> schuelerList) {
 		List<Kurs> justWishes = fillInStudentsDependingOnWish(schuelerList);
+		refactorIfCourseFull(justWishes);
 		return justWishes;
+	}
+
+	private static void refactorIfCourseFull(List<Kurs> justWishes) {
+		for(Kurs c : justWishes) {
+			if(c.getMaxSize() < c.getActualSize()) {
+				int toMany = c.getActualSize() - c.getMaxSize();
+				List<Schueler> onlySecondWish = new ArrayList<>();
+				for(int i = 0; i < toMany ; i++) {
+					Collections.shuffle(c.getSchueler());
+					
+				}
+			}
+		}
 	}
 
 	static List<Kurs> fillInStudentsDependingOnWish(List<Schueler> schuelerList) {
@@ -57,6 +73,10 @@ public class CourseCreator {
 			}
 		}
 		return firstExampleCourses;
+	}
+	
+	static void distributeRandomlyIfCourseFull(List<Kurs> exampleCourses) {
+		
 	}
 
 }
