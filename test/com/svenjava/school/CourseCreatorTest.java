@@ -15,50 +15,15 @@ import org.junit.jupiter.api.Test;
 
 class CourseCreatorTest {
 	static List<Schueler> schuelerList;
-	static List<Kurs> courseList;
-	CourseCreator cc = new CourseCreator(schuelerList, courseList);
+	static List<Kurs> randomCourseListWithTenToTwentyStudentsAndNCourses;
+	CourseCreator cc = new CourseCreator(schuelerList, randomCourseListWithTenToTwentyStudentsAndNCourses);
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-		Random random = new Random();
-		courseList = new ArrayList<>();
-		fillCourseList(courseList, random);
-		schuelerList = new ArrayList<>();
-		fillSchuelerList(schuelerList, random, courseList);
-	}
-
-	static void fillSchuelerList(List<Schueler> schuelerList, Random random, List<Kurs> courseList) {
-		for (int i = 0; i < 300; i++) {
-			Wahl w = getThreeRandomCourses(random, courseList);
-			Klassenstufe stufe;
-			if(i < 100){
-				stufe = Klassenstufe.ACHT;
-			}else if(i >= 100 && i < 200) {
-				stufe = Klassenstufe.NEUN;
-			}else {
-				stufe = Klassenstufe.ZEHN;
-			}
-			Schueler s = new Schueler("vorname"+i, "nachname"+i, stufe, w);
-			schuelerList.add(s);
-		}
-		
-	}
-
-	private static Wahl getThreeRandomCourses(Random random, List<Kurs> courseList) {
-		List<Kurs> copy = new ArrayList<>(courseList);
-		Kurs k1 = copy.get(random.nextInt(copy.size()));
-		copy.remove(k1);
-		Kurs k2 = copy.get(random.nextInt(copy.size()));
-		copy.remove(k2);
-		Kurs k3 = copy.get(random.nextInt(copy.size()));
-		return new Wahl(k1, k2, k3);
-	}
-
-	private static void fillCourseList(List<Kurs> list, Random random) {
-		// TODO Auto-generated method stub
-		for(int i = 0; i < 20; i++) {
-			list.add(new Kurs("Kurs"+i, random.nextInt(10)+10));
-		}
+		randomCourseListWithTenToTwentyStudentsAndNCourses = RandomCourseCreator.getNCoursesWithRandomMaxSizes(20);
+		System.out.println(randomCourseListWithTenToTwentyStudentsAndNCourses.size());
+		schuelerList = StudentListCreator.getNRandomStudentsWithEqualNthGraders(300);
+		System.out.println(schuelerList.size());
 	}
 
 	@AfterAll
@@ -91,10 +56,6 @@ class CourseCreatorTest {
 		List<Schueler> tenth = cc.createNthGraders(schuelerList, Klassenstufe.ZEHN);
 //		make sure, that every tenth grader gets its first choice:
 		List<Kurs> firstWish = cc.fillInStudentsDependingOnWish(tenth);
-		System.out.println(firstWish.get(0));
-		System.out.println(firstWish.get(0).getSchueler().get(0).getWahl().erstWahl);
-		System.out.println(firstWish.get(1));
-		System.out.println(firstWish.get(1).getSchueler().get(1).getWahl().erstWahl);
 		for(Kurs c : firstWish) {
 			System.out.println(c + ": maximale Größe: "+ c.getMaxSize());
 			for( Schueler s : c.getSchueler()) {

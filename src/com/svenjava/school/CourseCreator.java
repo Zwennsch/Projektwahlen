@@ -16,26 +16,26 @@ import java.util.stream.Collectors;
  * 	3. If the primary choice isn't possible, then each 10th grader should get his secondary choice and if this isn't possible the third choice.
  * 	4. The other students should get there primary wishes, after the 10th graders.
  * 
- * @author Sven Schröder
+ * @author Sven Schroeder
  * {@summary Calculates the composition of the courses depending on the election by students }
  */
 public class CourseCreator {
 	
 	static List<Kurs> canBeFilledUpCourses;
-	static List<Schueler> tenThgraders;
+	static List<Schueler> tenThGraders;
 	List<Kurs> finalCourses;
 	private static List<Kurs> firstExampleCourses;
 	private static List<Schueler> wishNotFullfilled;
 	Random random = new Random();
 	
 	public CourseCreator(List<Schueler> alleSchueler, List<Kurs>  courses) {
-		tenThgraders = createNthGraders(alleSchueler, Klassenstufe.ZEHN);
+		tenThGraders = createNthGraders(alleSchueler, Klassenstufe.ZEHN);
 		canBeFilledUpCourses = List.copyOf(courses);
 		firstExampleCourses = List.copyOf(courses);
 	}
 	
 	public static void calculateCourses() {
-		List<Kurs> coursesWithTenThDistibuted = distributeNthGraders(tenThgraders);
+		List<Kurs> coursesWithTenThDistibuted = distributeNthGraders(tenThGraders);
 	}
 	
 	public List<Schueler> createNthGraders(List<Schueler> alle, Klassenstufe stufe) {
