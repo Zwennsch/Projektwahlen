@@ -96,7 +96,11 @@ local.properties
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
+<<<<<<< HEAD
 # possibly testing files
+=======
+#.attach files
+>>>>>>> 7397b8ab04216f61f265f575041a980d90071b52
 .attach*
 
 # End of https://www.gitignore.io/api/java,eclipse
