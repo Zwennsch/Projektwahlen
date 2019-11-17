@@ -2,7 +2,6 @@ package com.svenjava.school;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -11,8 +10,10 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("Course Creator Test")
 class CourseCreatorTest {
 	static List<Schueler> schuelerList;
 	static List<Kurs> randomCourseListWithTenToTwentyStudentsAndNCourses;
@@ -28,6 +29,8 @@ class CourseCreatorTest {
 
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
+		schuelerList = null;
+		randomCourseListWithTenToTwentyStudentsAndNCourses = null;
 	}
 
 	@BeforeEach
@@ -39,6 +42,7 @@ class CourseCreatorTest {
 	}
 	
 	@Test 
+	@DisplayName("Test generate nth graders")
 	void testGenerateNthGrades () throws Exception{
 		List<Schueler> tenth = cc.createNthGraders(schuelerList, Klassenstufe.ZEHN);
 		Random r = new Random();
@@ -55,7 +59,7 @@ class CourseCreatorTest {
 	void testFillInStudentsDependingOnWish() {
 		List<Schueler> tenth = cc.createNthGraders(schuelerList, Klassenstufe.ZEHN);
 //		make sure, that every tenth grader gets its first choice:
-		List<Kurs> firstWish = cc.fillInStudentsDependingOnWish(tenth);
+		List<Kurs> firstWish = CourseCreator.fillInStudentsDependingOnWish(tenth);
 		for(Kurs c : firstWish) {
 			System.out.println(c + ": maximale Größe: "+ c.getMaxSize());
 			for( Schueler s : c.getSchueler()) {

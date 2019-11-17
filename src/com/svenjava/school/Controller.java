@@ -2,6 +2,8 @@ package com.svenjava.school;
 
 
 
+import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -26,11 +28,13 @@ public class Controller {
 	@FXML
 	private ChoiceBox<Kurs> cbErstwahl, cbZweitwahl, cbDrittwahl; 
 	@FXML
-	private MenuItem saveMenu, finishMenu;
+	private MenuItem saveMenu, finishMenu, loadMenu;
 	
 	Toggle standard = rbEight;
 	Alert confirmed  = new Alert(AlertType.INFORMATION);
 	Alert wrongEntry = new Alert(AlertType.ERROR);
+	Alert wrongSave = new Alert(AlertType.ERROR);
+	Alert saveData = new Alert(AlertType.INFORMATION);
 	
 	/*
 	 * This method will automatically bee invoked from the FXMLLoader 
@@ -59,13 +63,11 @@ public class Controller {
 		Kurs k3 = cbDrittwahl.getValue();
 		if(InputChecker.isValid(name, nachN, stufeString, k1,k2,k3)){
 			stufe = getStufe(stufeString);
-			Schueler s = new Schueler(name, nachN, stufe);
 			Wahl w = new Wahl(k1, k2, k3);
-			s.makeWahl(w);
+			Schueler s = new Schueler(name, nachN, stufe, w);
 			Schueler.alleSchueler.add(s);
 			confirmed.setHeaderText("O.K. "+name+" ,Eintrag gespeichert");
 			confirmed.show();
-			System.out.println(s.getKlassenstufe());
 			clearScreenForNewEntry();
 		}else {
 			wrongEntry.show();
@@ -92,10 +94,34 @@ public class Controller {
 		}
 		return stufe;
 	}
+	@FXML
+	private void loadState(ActionEvent e) {
+		System.out.println("Loading");
+		try {
+			DataHandler.readStudentDataFromFile("src/com/svenjava/school/files/studentList.txt");
+			System.out.println(Schueler.alleSchueler.get(0).getWahl().drittWahl);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	}
 	
 	@FXML
 	private void saveState(ActionEvent e) {
+		/*
+		 * Still to implement: Append to an already existing file! So far the file gets overridden every time user saves the current state
+		 */
 		System.out.println("Saving");
+		try {
+			DataHandler.saveStudentsToFile(Schueler.alleSchueler, "src/com/svenjava/school/files/studentList.txt");
+			saveData.setContentText("Schülerdaten wurden gespeichert");
+			saveData.show();
+		} catch (IOException e1) {
+			System.out.println("Error while saving the students!");
+			wrongSave.setContentText("Fehler beim Speichern! Programm nicht schließen und Lehrer informieren!");
+			wrongSave.show();
+			e1.printStackTrace();
+		}
 	}
 	@FXML
 	private void calculateCourses(ActionEvent e) {

@@ -1,7 +1,5 @@
 package com.svenjava.school;
 
-import com.sun.javafx.binding.StringFormatter;
-
 public class Wahl {
 	
 	Kurs erstWahl;

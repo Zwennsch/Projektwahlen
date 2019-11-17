@@ -1,9 +1,6 @@
 package com.svenjava.school;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 public class Schueler {
 	
@@ -26,19 +23,22 @@ public class Schueler {
 		this.nachname = nachname;
 		this.wahl = wahl;
 		this.stufe = klasse;
+		
 	}
-	public Schueler(String vorname,String nachname,  Klassenstufe klasse) {
-		this.id = totalNumber++;
-		this.vorname = vorname;
-		this.nachname = nachname;
-		this.stufe = klasse;
-	}
+//	public Schueler(String vorname,String nachname,  Klassenstufe klasse) {
+//		this.id = totalNumber++;
+//		this.vorname = vorname;
+//		this.nachname = nachname;
+//		this.stufe = klasse;
+//	}
 	
 	public void makeWahl(Wahl w) {
 		this.wahl = w;
 	}
 	
-	
+	public int getId() {
+		return this.id;
+	}
 	public Wahl getWahl() {
 		return this.wahl;
 	}

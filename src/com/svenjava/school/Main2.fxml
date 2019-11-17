@@ -25,6 +25,7 @@
               <menus>
                 <Menu mnemonicParsing="false" text="File">
                   <items>
+                  	<MenuItem fx:id="loadMenu" mnemonicParsing="false" onAction="#loadState" text="Load Students" />
                     <MenuItem fx:id="saveMenu" mnemonicParsing="false" onAction="#saveState" text="Save Current State" />
                     <MenuItem fx:id="finishMenu" mnemonicParsing="false" onAction="#calculateCourses" text="Finish Input" />
                   </items>
