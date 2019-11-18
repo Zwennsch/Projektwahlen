@@ -56,30 +56,38 @@ public class DataHandler {
 		
 		
 	}
+	/**
+	 * reads the student date from a csv-file into the List with all students only if the file already exists
+	 * @param fileName 
+	 * the filename  to read from
+	 * @throws IOException
+	 */
 	static void readStudentDataFromFile(String fileName) throws IOException {
 		File f = new File(fileName);
-		br = new BufferedReader(new FileReader(f));
-		String line;
-		while((line=br.readLine())!= null) {
-			String[] data = line.split(",");
-			int k1 = 0;
-			int k2 = 0;
-			int k3 = 0;
-			for(int i = 0; i < FxMain.coursesList.size(); i++) {
-				if(FxMain.coursesList.get(i).toString().equals(data[4])) {
-					k1 = i;
+		if(f.exists()) {
+			br = new BufferedReader(new FileReader(f));
+			String line;
+			while((line=br.readLine())!= null) {
+				String[] data = line.split(",");
+				int k1 = 0;
+				int k2 = 0;
+				int k3 = 0;
+				for(int i = 0; i < FxMain.coursesList.size(); i++) {
+					if(FxMain.coursesList.get(i).toString().equals(data[4])) {
+						k1 = i;
+					}
+					if(FxMain.coursesList.get(i).toString().equals(data[5])) {
+						k2 = i;
+					}
+					if(FxMain.coursesList.get(i).toString().equals(data[6])) {
+						k3 = i;
+					}
 				}
-				if(FxMain.coursesList.get(i).toString().equals(data[5])) {
-					k2 = i;
-				}
-				if(FxMain.coursesList.get(i).toString().equals(data[6])) {
-					k3 = i;
-				}
+				Schueler s = new Schueler(data[1], data[2], Klassenstufe.valueOf(data[3]) , new Wahl(FxMain.coursesList.get(k1), FxMain.coursesList.get(k2), FxMain.coursesList.get(k3)));
+				Schueler.alleSchueler.add(s);
 			}
-			Schueler s = new Schueler(data[1], data[2], Klassenstufe.valueOf(data[3]) , new Wahl(FxMain.coursesList.get(k1), FxMain.coursesList.get(k2), FxMain.coursesList.get(k3)));
-			Schueler.alleSchueler.add(s);
+			br.close();
 		}
-		br.close();
 		
 		
 	}

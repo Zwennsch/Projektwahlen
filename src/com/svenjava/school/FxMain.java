@@ -11,12 +11,14 @@ import javafx.stage.Stage;
 
 public class FxMain extends Application {
 	static List<Kurs> coursesList = new ArrayList<>();
+	String pathToStudentsSavedFile = "src/com/svenjava/school/files/studentList.txt";
 	@Override
 	public void init() throws Exception {
 		// TODO Auto-generated method stub
 		super.init();
 		DataHandler.loadCoursesIntoList(coursesList);
 		Schueler.alleSchueler = new ArrayList<Schueler>();
+		DataHandler.readStudentDataFromFile(pathToStudentsSavedFile);
 	}
 
 
@@ -31,6 +33,12 @@ public class FxMain extends Application {
 		
 		stage.show();
 		
+	}
+	@Override
+	public void stop() throws Exception {
+		System.out.println("Saveing automatically");
+		DataHandler.saveStudentsToFile(Schueler.alleSchueler, pathToStudentsSavedFile);
+		super.stop();
 	}
 
 }

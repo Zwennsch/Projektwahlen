@@ -1,4 +1,3 @@
-0,Sven ,Schröder,ZEHN,Kurs5,Kurs3,Programmieren
-1,Anke ,Mauser,ZEHN,Kurs4,Kurs2,Schwimmen
-2,Tim,Schmidt,NEUN,Kurs3,Schwimmen,Programmieren
-3,Nicklas,Tölke,ACHT,Kurs5,Jugend debattiert,Kurs12
+0,Sven,Schröder,ZEHN,Kurs4,Kurs5,Kurs3
+1,Tim,Möhlenkamp,NEUN,Kurs3,Kurs5,Kurs2
+2,Jensi,Krügi,NEUN,Kurs4,Kurs3,Jugend debattiert
