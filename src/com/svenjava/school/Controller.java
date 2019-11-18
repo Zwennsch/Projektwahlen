@@ -32,6 +32,7 @@ public class Controller {
 	
 	Toggle standard = rbEight;
 	Alert confirmed  = new Alert(AlertType.INFORMATION);
+	Alert loaded  = new Alert(AlertType.INFORMATION);
 	Alert wrongEntry = new Alert(AlertType.ERROR);
 	Alert wrongSave = new Alert(AlertType.ERROR);
 	Alert saveData = new Alert(AlertType.INFORMATION);
@@ -66,8 +67,9 @@ public class Controller {
 			Wahl w = new Wahl(k1, k2, k3);
 			Schueler s = new Schueler(name, nachN, stufe, w);
 			Schueler.alleSchueler.add(s);
-			confirmed.setHeaderText("O.K. "+name+" ,Eintrag gespeichert");
+			confirmed.setHeaderText("O.K. "+name+", Eintrag gespeichert");
 			confirmed.show();
+			System.out.println(s.getId());
 			clearScreenForNewEntry();
 		}else {
 			wrongEntry.show();
@@ -100,6 +102,8 @@ public class Controller {
 		try {
 			DataHandler.readStudentDataFromFile("src/com/svenjava/school/files/studentList.txt");
 			System.out.println(Schueler.alleSchueler.get(0).getWahl().drittWahl);
+			loaded.setContentText("Die Daten der Schüler wurden geladen");
+			loaded.show();
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -110,6 +114,8 @@ public class Controller {
 	private void saveState(ActionEvent e) {
 		/*
 		 * Still to implement: Append to an already existing file! So far the file gets overridden every time user saves the current state
+		 * But this actually isn't much of a problem as long as th user loads the already existing file in advance..
+		 * Still not sure how to implement this
 		 */
 		System.out.println("Saving");
 		try {
