@@ -23,6 +23,7 @@ public class CourseCreator {
 	
 	static List<Kurs> canBeFilledUpCourses;
 	static List<Schueler> tenThGraders;
+	static List<Schueler> eigthAndNinthThGraders;
 	List<Kurs> finalCourses;
 	private static List<Kurs> firstExampleCourses;
 	private static List<Schueler> wishNotFullfilled;
@@ -30,6 +31,8 @@ public class CourseCreator {
 	
 	public CourseCreator(List<Schueler> alleSchueler, List<Kurs>  courses) {
 		tenThGraders = createNthGraders(alleSchueler, Klassenstufe.ZEHN);
+		eigthAndNinthThGraders.addAll(createNthGraders(alleSchueler, Klassenstufe.ACHT));
+		eigthAndNinthThGraders.addAll(createNthGraders(alleSchueler, Klassenstufe.NEUN));
 		canBeFilledUpCourses = List.copyOf(courses);
 		firstExampleCourses = List.copyOf(courses);
 	}

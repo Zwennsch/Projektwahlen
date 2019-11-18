@@ -1,3 +1,9 @@
 0,Sven,Schröder,ZEHN,Kurs4,Kurs5,Kurs3
 1,Tim,Möhlenkamp,NEUN,Kurs3,Kurs5,Kurs2
 2,Jensi,Krügi,NEUN,Kurs4,Kurs3,Jugend debattiert
+3,Hans ,Keller,NEUN,Kurs4,Kurs3,Programmieren
+4,Peter,Neuhaus,ACHT,Fußball,Kurs5,Kurs11
+5,Tom,Hauser,ACHT,Kurs5,Kurs3,Kurs1
+6,Jana,Harriefeld,NEUN,Kurs3,Kurs1,Kurs2
+7,Jörg,Schmadtke,ACHT,Kurs3,Kurs5,Programmieren
+8,Jannes,Möller,ZEHN,Schwimmen,Fußball,Kurs11

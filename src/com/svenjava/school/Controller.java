@@ -72,6 +72,7 @@ public class Controller {
 			System.out.println(s.getId());
 			clearScreenForNewEntry();
 		}else {
+			wrongEntry.setContentText(InputChecker.errorMessage);
 			wrongEntry.show();
 		}
 	}

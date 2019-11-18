@@ -1,11 +1,9 @@
 package com.svenjava.school;
 
 public class InputChecker {
+	
+	static String errorMessage = "";
 
-	public static void isValid(String name, String nachN, Klassenstufe stufe, Wahl w) {
-		
-		
-	}
 
 	public static boolean  isValid(String name, String nachN, String stufeString, Kurs k1, Kurs k2, Kurs k3) {
 		if(!isNameValid(name, nachN) || !isStufeValid(stufeString) || !isWahlValid(k1, k2, k3)) {
@@ -18,7 +16,7 @@ public class InputChecker {
 
 	private static boolean isWahlValid(Kurs k1, Kurs k2, Kurs k3) {
 		if((k1.equals(k2)) || (k2.equals(k3)) || (k1.equals(k3))) {
-			System.out.println("2 gleiche Kurse!");
+			errorMessage = "2 gleiche Kurse!";
 			return false;
 			
 		}
@@ -42,7 +40,7 @@ public class InputChecker {
 
 	private static boolean isNameValid(String name, String nachN) {
 		if(name.equals("") || nachN.equals("")) {
-			System.out.println("Bitte Namen korrekt eingeben!");
+			errorMessage = "Bitte Namen korrekt eingeben!";
 			return false;
 		}
 		
