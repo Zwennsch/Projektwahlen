@@ -103,5 +103,7 @@ hs_err_pid*
 >>>>>>> 7397b8ab04216f61f265f575041a980d90071b52
 .attach*
 
+# changed studentList.txt
+studentList.txt
 # End of https://www.gitignore.io/api/java,eclipse
 
