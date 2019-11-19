@@ -21,24 +21,23 @@ import java.util.stream.Collectors;
  */
 public class CourseCreator {
 	
-	static List<Kurs> canBeFilledUpCourses;
+	static List<Kurs> finalCoursestoFill;
 	static List<Schueler> tenThGraders;
 	static List<Schueler> eigthAndNinthThGraders;
-	List<Kurs> finalCourses;
 	private static List<Kurs> firstExampleCourses;
 	private static List<Schueler> wishNotFullfilled;
 	Random random = new Random();
 	
 	public CourseCreator(List<Schueler> alleSchueler, List<Kurs>  courses) {
 		tenThGraders = createNthGraders(alleSchueler, Klassenstufe.ZEHN);
-		eigthAndNinthThGraders.addAll(createNthGraders(alleSchueler, Klassenstufe.ACHT));
+		eigthAndNinthThGraders = createNthGraders(alleSchueler, Klassenstufe.ACHT);
 		eigthAndNinthThGraders.addAll(createNthGraders(alleSchueler, Klassenstufe.NEUN));
-		canBeFilledUpCourses = List.copyOf(courses);
-		firstExampleCourses = List.copyOf(courses);
+		finalCoursestoFill = courses;
+//		firstExampleCourses = List.copyOf(courses);
 	}
 	
 	public static void calculateCourses() {
-		List<Kurs> coursesWithTenThDistibuted = distributeNthGraders(tenThGraders);
+		distributeNthGraders(tenThGraders, finalCoursestoFill);
 	}
 	
 	public List<Schueler> createNthGraders(List<Schueler> alle, Klassenstufe stufe) {
@@ -47,10 +46,9 @@ public class CourseCreator {
 	}
 	
 
-	private static List<Kurs> distributeNthGraders(List<Schueler> schuelerList) {
-		List<Kurs> justWishes = fillInStudentsDependingOnWish(schuelerList);
-		refactorIfCourseFull(justWishes);
-		return justWishes;
+	private static void distributeNthGraders(List<Schueler> schuelerList, List<Kurs> coursesToBeFilled) {
+		fillInStudentsDependingOnWish(schuelerList, coursesToBeFilled);
+		refactorIfCourseFull(coursesToBeFilled);
 	}
 /*
  * I am still not sure on how to refactor as I can see two possible ways:
@@ -59,25 +57,30 @@ public class CourseCreator {
  * 3. or it could be random choice from this now full course. This way other students might also loose their first choice...
  * 
  */
+	
+	/**checks if any of the courses maxSize is being exceeded. If so students get randomly picked from the list and put into the pool
+	 * of students List<Schueler> wishNotFullfilled. 
+	 * 
+	 * @param justWishes the List of courses filled up with students depending on their wishes
+	 */
 	private static void refactorIfCourseFull(List<Kurs> justWishes) {
 		for(Kurs c : justWishes) {
 			if(c.getMaxSize() < c.getActualSize()) {
 				int toMany = c.getActualSize() - c.getMaxSize();
-				List<Schueler> onlySecondWish = new ArrayList<>();
 				for(int i = 0; i < toMany ; i++) {
 					Collections.shuffle(c.getSchueler());
 					Schueler s = c.getSchueler().get(0);
 					c.removeSchueler(s);
-					onlySecondWish.add(s);
+					wishNotFullfilled.add(s);
 				}
 			}
 		}
 	}
 
-	static List<Kurs> fillInStudentsDependingOnWish(List<Schueler> schuelerList) {
+	static List<Kurs> fillInStudentsDependingOnWish(List<Schueler> schuelerList, List<Kurs> coursToBeFilledOnWish) {
 		for(Schueler s : schuelerList) {
 			Kurs course = s.getWahl().erstWahl;
-			Iterator<Kurs> iterator = firstExampleCourses.iterator();
+			Iterator<Kurs> iterator = coursToBeFilledOnWish.iterator();
 			while(iterator.hasNext()) {
 				Kurs it = iterator.next();
 				if(it.equals(course)) {
@@ -86,7 +89,7 @@ public class CourseCreator {
 				}
 			}
 		}
-		return firstExampleCourses;
+		return coursToBeFilledOnWish;
 	}
 	
 	static void distributeRandomlyIfCourseFull(List<Kurs> exampleCourses) {

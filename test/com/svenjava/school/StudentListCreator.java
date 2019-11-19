@@ -26,5 +26,15 @@ public class StudentListCreator {
 		return students;
 		
 	}
+	
+	static List<Schueler> getNStudentsWithNthGradeWithEqalFirstWish(int totalNumberOfStudents, Klassenstufe grade){
+		List<Schueler> nthSameFirstWish = getNStudentsWithGrade(totalNumberOfStudents, grade);
+		for(Schueler s : nthSameFirstWish) {
+			Wahl w = RandomCourseCreator.getThreeKursesWithSameFirstWish();
+			s.makeWahl(w);
+		}
+		return nthSameFirstWish;
+		
+	}
 
 }

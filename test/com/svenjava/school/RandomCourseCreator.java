@@ -38,5 +38,10 @@ public class RandomCourseCreator {
 		return randomCourseListWithNCourses;
 	}
 	
-
+	static Wahl getThreeKursesWithSameFirstWish()
+	{
+		List<Kurs> courses = getNCoursesWithRandomMaxSizes(20);
+		Kurs firstChoice = courses.get(0);
+		return new Wahl(firstChoice, courses.get(random.nextInt(courses.size())), courses.get(random.nextInt(courses.size())));
+	}
 }

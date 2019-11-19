@@ -2,6 +2,7 @@ package com.svenjava.school;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -43,7 +44,7 @@ class CourseCreatorTest {
 	
 	@Test 
 	@DisplayName("Test generate nth graders")
-	void testGenerateNthGrades () throws Exception{
+	void testCreateNthGrades () throws Exception{
 		List<Schueler> tenth = cc.createNthGraders(schuelerList, Klassenstufe.ZEHN);
 		Random r = new Random();
 		assertEquals(100, tenth.size(), "Should be 100");
@@ -59,13 +60,34 @@ class CourseCreatorTest {
 	void testFillInStudentsDependingOnWish() {
 		List<Schueler> tenth = cc.createNthGraders(schuelerList, Klassenstufe.ZEHN);
 //		make sure, that every tenth grader gets its first choice:
-		List<Kurs> firstWish = CourseCreator.fillInStudentsDependingOnWish(tenth);
+		List<Kurs> firstWish = CourseCreator.fillInStudentsDependingOnWish(tenth, randomCourseListWithTenToTwentyStudentsAndNCourses);
 		for(Kurs c : firstWish) {
 			System.out.println(c + ": maximale Größe: "+ c.getMaxSize());
 			for( Schueler s : c.getSchueler()) {
 				System.out.println(s + "wählte erstwahl:" + s.getWahl().erstWahl);
 			}
 		}
+	}
+	
+	@Test
+	void testRefactorIfCourseIsfull() {
+		
+//		test for 10 times:
+		List<Schueler> students = new ArrayList<>();
+//		create 100 students where at least 30 of them have the same first wish;
+		for (int i = 0; i < 1; i++) {
+			students = StudentListCreator.getNStudentsWithNthGradeWithEqalFirstWish(30, Klassenstufe.ZEHN);
+			students.addAll(StudentListCreator.getNStudentsWithGrade(70, Klassenstufe.ZEHN));
+		}
+		int counter = 0;
+		for (Schueler s : students) {
+			System.out.println(s.getWahl().erstWahl);
+			if(s.getWahl().erstWahl.toString().equals("Kurs0")) {
+				counter++;
+			}
+		}
+		System.out.println(counter);
+		
 	}
 	
 
