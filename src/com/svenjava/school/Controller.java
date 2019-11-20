@@ -37,7 +37,7 @@ public class Controller {
 	Alert wrongSave = new Alert(AlertType.ERROR);
 	Alert saveData = new Alert(AlertType.INFORMATION);
 	
-	/*
+	/**
 	 * This method will automatically bee invoked from the FXMLLoader 
 	 */
 	public void initialize() {
@@ -47,7 +47,6 @@ public class Controller {
 		cbErstwahl.setValue(FxMain.coursesList.get(0));
 		cbZweitwahl.setValue(FxMain.coursesList.get(0));
 		cbDrittwahl.setValue(FxMain.coursesList.get(0));
-		tgStufen.selectToggle(rbEight);
 		confirmed.setContentText("Nächste(r) Schüler(in) bitte!");
 		wrongEntry.setContentText("Bitte korrigieren Sie die Eingabe");
 		wrongEntry.setHeaderText("Eingabe fehlerhaft");
@@ -58,11 +57,11 @@ public class Controller {
 		name = vorname.getText();
 		nachN = nachname.getText();
 		Klassenstufe stufe ;
-		String stufeString = ((RadioButton) tgStufen.getSelectedToggle()).getText();
 		Kurs k1 = cbErstwahl.getValue();
 		Kurs k2 = cbZweitwahl.getValue();
 		Kurs k3 = cbDrittwahl.getValue();
-		if(InputChecker.isValid(name, nachN, stufeString, k1,k2,k3)){
+		if(InputChecker.isValid(name, nachN, tgStufen, k1,k2,k3)){
+			String stufeString = ((RadioButton) tgStufen.getSelectedToggle()).getText();
 			stufe = getStufe(stufeString);
 			Wahl w = new Wahl(k1, k2, k3);
 			Schueler s = new Schueler(name, nachN, stufe, w);
@@ -81,6 +80,7 @@ public class Controller {
 		vorname.setText("");
 		nachname.setText("");
 		tgStufen.selectToggle(rbEight);
+		rbEight.setSelected(false);
 		cbErstwahl.setValue(FxMain.coursesList.get(0));
 		cbZweitwahl.setValue(FxMain.coursesList.get(0));
 		cbDrittwahl.setValue(FxMain.coursesList.get(0));

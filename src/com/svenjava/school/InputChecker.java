@@ -1,12 +1,14 @@
 package com.svenjava.school;
 
+import javafx.scene.control.ToggleGroup;
+
 public class InputChecker {
 	
 	static String errorMessage = "";
 
 
-	public static boolean  isValid(String name, String nachN, String stufeString, Kurs k1, Kurs k2, Kurs k3) {
-		if(!isNameValid(name, nachN) || !isStufeValid(stufeString) || !isWahlValid(k1, k2, k3)) {
+	public static boolean  isValid(String name, String nachN, ToggleGroup group, Kurs k1, Kurs k2, Kurs k3) {
+		if(!isNameValid(name, nachN) || !isStufeValid(group) || !isWahlValid(k1, k2, k3)) {
 			return false;
 		}
 		
@@ -24,18 +26,23 @@ public class InputChecker {
 		return true;
 	}
 
-	private static boolean isStufeValid(String stufeString) {
-		switch(stufeString) {
-		case "8":
-			return true;
-		case "9":
-			return true;
-		case "10":
-			return true;
-		default:
-			System.out.println("keine Stufe gewählt!");
+	private static boolean isStufeValid(ToggleGroup group) {
+		if(group.getSelectedToggle() == null) {
+			errorMessage = "Bitte Klassenstufe wählen";
 			return false;
 		}
+		else return true;
+//		switch(stufeString) {
+//		case "8":
+//			return true;
+//		case "9":
+//			return true;
+//		case "10":
+//			return true;
+//		default:
+//			System.out.println("keine Stufe gewählt!");
+//			return false;
+//		}
 	}
 
 	private static boolean isNameValid(String name, String nachN) {

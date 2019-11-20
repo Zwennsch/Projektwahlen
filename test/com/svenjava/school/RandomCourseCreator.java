@@ -26,6 +26,7 @@ public class RandomCourseCreator {
 	}
 	
 	static Wahl getThreeRandomCoursesFromCourseListWithNCourses() {
+		randomCourseListWithNCourses = getNCoursesWithRandomMaxSizes(20);
 		Collections.shuffle(randomCourseListWithNCourses);
 		return new Wahl(randomCourseListWithNCourses.get(0), randomCourseListWithNCourses.get(1), randomCourseListWithNCourses.get(2));
 	}

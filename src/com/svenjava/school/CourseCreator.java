@@ -40,7 +40,7 @@ public class CourseCreator {
 		distributeNthGraders(tenThGraders, finalCoursestoFill);
 	}
 	
-	public List<Schueler> createNthGraders(List<Schueler> alle, Klassenstufe stufe) {
+	public static List<Schueler> createNthGraders(List<Schueler> alle, Klassenstufe stufe) {
 		Predicate<Schueler> byGrade = schueler -> schueler.getKlassenstufe() == stufe;
 		return alle.stream().filter(byGrade).collect(Collectors.toList());
 	}
