@@ -24,8 +24,8 @@ public class CourseCreator {
 	static List<Kurs> finalCoursestoFill;
 	static List<Schueler> tenThGraders;
 	static List<Schueler> eigthAndNinthThGraders;
-	private static List<Kurs> firstExampleCourses;
-	private static List<Schueler> wishNotFullfilled;
+//	private static List<Kurs> firstExampleCourses;
+	static List<Schueler> wishNotFullfilled;
 	Random random = new Random();
 	
 	public CourseCreator(List<Schueler> alleSchueler, List<Kurs>  courses) {
@@ -37,6 +37,7 @@ public class CourseCreator {
 	}
 	
 	public static void calculateCourses() {
+//		first: distruíbute the 10th graders
 		distributeNthGraders(tenThGraders, finalCoursestoFill);
 	}
 	
@@ -63,7 +64,8 @@ public class CourseCreator {
 	 * 
 	 * @param justWishes the List of courses filled up with students depending on their wishes
 	 */
-	private static void refactorIfCourseFull(List<Kurs> justWishes) {
+	static void refactorIfCourseFull(List<Kurs> justWishes) {
+		wishNotFullfilled = new ArrayList<>();
 		for(Kurs c : justWishes) {
 			if(c.getMaxSize() < c.getActualSize()) {
 				int toMany = c.getActualSize() - c.getMaxSize();
