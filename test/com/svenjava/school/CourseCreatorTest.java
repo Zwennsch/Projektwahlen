@@ -22,10 +22,6 @@ class CourseCreatorTest {
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-//		randomCourseListWithTenToTwentyStudentsAndNCourses = RandomCourseCreator.getNCoursesWithRandomMaxSizes(20);
-//		System.out.println(randomCourseListWithTenToTwentyStudentsAndNCourses.size());
-//		schuelerList = StudentListCreator.getNRandomStudentsWithEqualNthGraders(300);
-//		System.out.println(schuelerList.size());
 		
 	}
 
@@ -60,8 +56,10 @@ class CourseCreatorTest {
 	
 	@Test
 	void testFillInStudentsDependingOnWish() {
+//		create 300 random students and 20 random courses
 		schuelerList = StudentListCreator.getNRandomStudentsWithEqualNthGraders(300);
 		randomCourseListWithTenToTwentyStudentsAndNCourses = RandomCourseCreator.getNCoursesWithRandomMaxSizes(20);
+//		create a list of 10thgraders
 		List<Schueler> tenth = CourseCreator.createNthGraders(schuelerList, Klassenstufe.ZEHN);
 //		make sure, that every tenth grader gets its first choice:
 		List<Kurs> firstWish = CourseCreator.fillInStudentsDependingOnWish(tenth, randomCourseListWithTenToTwentyStudentsAndNCourses);
@@ -69,13 +67,13 @@ class CourseCreatorTest {
 			System.out.println(c + ": maximale Größe: "+ c.getMaxSize());
 			for( Schueler s : c.getSchueler()) {
 				System.out.println(s + " wählte erstwahl:" + s.getWahl().erstWahl);
+				assertEquals(c, s.getWahl().erstWahl);
 			}
 		}
 	}
 	
 	@Test
 	void testRefactorIfCourseIsfull() {
-		
 //		test for 10 times:
 		List<Schueler> students = new ArrayList<>();
 //		create 100 students where at least 30 of them have the same first wish;
