@@ -24,7 +24,6 @@ public class CourseCreator {
 	static List<Kurs> finalCoursestoFill;
 	static List<Schueler> tenThGraders;
 	static List<Schueler> eigthAndNinthThGraders;
-//	private static List<Kurs> firstExampleCourses;
 	static List<Schueler> wishNotFullfilled;
 	Random random = new Random();
 	
@@ -51,13 +50,7 @@ public class CourseCreator {
 		fillInStudentsDependingOnWish(schuelerList, coursesToBeFilled);
 		refactorIfCourseFull(coursesToBeFilled);
 	}
-/*
- * I am still not sure on how to refactor as I can see two possible ways:
- * 1. students who don't have their first wish fulfilled get put into the course with their second wish.
- * 2. if this course will also be full, they could immediately be put into the course with their third wish
- * 3. or it could be random choice from this now full course. This way other students might also loose their first choice...
- * 
- */
+	
 	
 	/**checks if any of the courses maxSize is being exceeded. If so students get randomly picked from the list and put into the pool
 	 * of students List<Schueler> wishNotFullfilled. 
@@ -76,10 +69,32 @@ public class CourseCreator {
 					wishNotFullfilled.add(s);
 				}
 			}
+//			distribute students depending on their second and third wish if possible
+		}if(!wishNotFullfilled.isEmpty()) {
+			int wish = 2;
+			do {
+				fillCoursesWithSecondOrThirdWish(justWishes, wish);
+				wish++;
+			}while(wishNotFullfilled.isEmpty() || wish > 3);
+			wish++;
 		}
 	}
 
-	static List<Kurs> fillInStudentsDependingOnWish(List<Schueler> schuelerList, List<Kurs> coursToBeFilledOnWish) {
+	private static void fillCoursesWithSecondOrThirdWish(List<Kurs> justWishes, int wishNumber) {
+		for(Schueler s : wishNotFullfilled) {
+			Kurs second = s.getWahl().wahl[wishNumber-1];
+			for(Kurs c: justWishes) {
+				if(c.equals(second)) {
+					if(!c.isFull()) {
+						c.addSchuelerToKurs(s);
+						wishNotFullfilled.remove(s);
+					}
+				}
+			}
+		}
+	}
+
+	static void fillInStudentsDependingOnWish(List<Schueler> schuelerList, List<Kurs> coursToBeFilledOnWish) {
 		for(Schueler s : schuelerList) {
 			Kurs course = s.getWahl().erstWahl;
 			Iterator<Kurs> iterator = coursToBeFilledOnWish.iterator();
@@ -91,7 +106,6 @@ public class CourseCreator {
 				}
 			}
 		}
-		return coursToBeFilledOnWish;
 	}
 	
 	static void distributeRandomlyIfCourseFull(List<Kurs> exampleCourses) {

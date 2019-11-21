@@ -40,6 +40,15 @@ public class Kurs {
 		}
 		return false;
 	}
+	public static Kurs getCourseFromList(List<Kurs> courses, Kurs course ) {
+		for(Kurs c : courses) {
+			if (c.equals(course)){
+				return c;
+			}
+		}
+		return null;
+	}
+	
 	public boolean isFull() {
 		return (this.getActualSize()>= this.maxSize);
 	}
