@@ -18,18 +18,17 @@ import org.junit.jupiter.api.Test;
 @DisplayName("Course Creator Test")
 class CourseCreatorTest {
 	static List<Schueler> schuelerList;
-	static List<Kurs> randomCourseListWithTenToTwentyStudentsAndNCourses;
-	CourseCreator cc;
+	static List<Kurs> twentyCourses;
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-		randomCourseListWithTenToTwentyStudentsAndNCourses = RandomCourseCreator.getNCoursesWithRandomMaxSizes(20);
+		twentyCourses = RandomCourseCreator.getNCoursesWithRandomMaxSizes(20);
 	}
 
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
 		schuelerList = null;
-		randomCourseListWithTenToTwentyStudentsAndNCourses = null;
+		twentyCourses = null;
 	}
 
 	@BeforeEach
@@ -43,7 +42,7 @@ class CourseCreatorTest {
 	@Test 
 	@DisplayName("Test generate nth graders")
 	void testCreateNthGrades () throws Exception{
-		schuelerList = StudentListCreator.getNRandomStudentsWithEqualNthGraders(300);
+		schuelerList = StudentListCreator.getNStudentsWithEqualNthGradersWithWahl(300, twentyCourses);
 		List<Schueler> tenth = CourseCreator.createNthGraders(schuelerList, Klassenstufe.ZEHN);
 		Random r = new Random();
 		assertEquals(100, tenth.size(), "Should be 100");
@@ -58,13 +57,13 @@ class CourseCreatorTest {
 	@Test
 	void testFillInStudentsDependingOnWish() {
 //		create 300 random students and 20 random courses
-		schuelerList = StudentListCreator.getNRandomStudentsWithEqualNthGraders(300);
+		schuelerList = StudentListCreator.getNStudentsWithEqualNthGraders(300);
 //		randomCourseListWithTenToTwentyStudentsAndNCourses = RandomCourseCreator.getNCoursesWithRandomMaxSizes(20);
 //		create a list of 10thgraders
 		List<Schueler> tenth = CourseCreator.createNthGraders(schuelerList, Klassenstufe.ZEHN);
 //		make sure, that every tenth grader gets its first choice:
-		CourseCreator.fillInStudentsDependingOnWish(tenth, randomCourseListWithTenToTwentyStudentsAndNCourses);
-		for(Kurs c : randomCourseListWithTenToTwentyStudentsAndNCourses) {
+		CourseCreator.fillInStudentsDependingOnWish(tenth, twentyCourses);
+		for(Kurs c : twentyCourses) {
 			System.out.println(c + ": maximale Größe: "+ c.getMaxSize());
 			for( Schueler s : c.getSchueler()) {
 				System.out.println(s + " wählte erstwahl:" + s.getWahl().erstWahl);
@@ -77,26 +76,35 @@ class CourseCreatorTest {
 	void testRefactorIfCourseIsfull() {
 		List<Schueler> students = new ArrayList<>();
 //		create 100 students where at least 30 of them have the same first wish;
-		for (int i = 0; i < 1; i++) {
-			students = StudentListCreator.getNStudentsWithNthGradeWithEqalFirstWish(30, Klassenstufe.ZEHN);
-			students.addAll(StudentListCreator.getNStudentsWithGrade(70, Klassenstufe.ZEHN));
-		}
+		students = StudentListCreator.getNStudentsWithNthGradeWithEqalFirstWish(30, Klassenstufe.ZEHN, twentyCourses);
+		students.addAll(StudentListCreator.getNStudentsWithGradeWithWahl(70, Klassenstufe.ZEHN, twentyCourses));
 //		add all the students to their courses
-		CourseCreator.fillInStudentsDependingOnWish(students, randomCourseListWithTenToTwentyStudentsAndNCourses);
+		CourseCreator.fillInStudentsDependingOnWish(students, twentyCourses);
 //		make sure that Kurs0 has more students than its capacity
-		assertTrue(randomCourseListWithTenToTwentyStudentsAndNCourses.get(0).getActualSize() > randomCourseListWithTenToTwentyStudentsAndNCourses.get(0).getMaxSize(), "should be more students in the course");
+		assertTrue(twentyCourses.get(0).getActualSize() > twentyCourses.get(0).getMaxSize(), "should be more students in the course");
+//		assert that the wishNotFullfilled List is still empty;
+		assertTrue(CourseCreator.wishNotFullfilled.isEmpty());
 //		Put the list through the refactor and make sure that the Kurs0 isn't exceeded any more
-		CourseCreator.refactorIfCourseFull(randomCourseListWithTenToTwentyStudentsAndNCourses);
-		assertTrue(randomCourseListWithTenToTwentyStudentsAndNCourses.get(0).getActualSize() == randomCourseListWithTenToTwentyStudentsAndNCourses.get(0).getMaxSize());
+		CourseCreator.refactorIfCourseFull(twentyCourses);
+		assertTrue(twentyCourses.get(0).getActualSize() == twentyCourses.get(0).getMaxSize());
 //		check, that the wishNotFUllfilled isn't empty any more;
-//		assertTrue(CourseCreator.wishNotFullfilled.size()>0);
-		for(Kurs c : randomCourseListWithTenToTwentyStudentsAndNCourses) {
-			System.out.println(c );
-			for(Schueler s : c.getSchueler()) {
-				System.out.println(s.getWahl());
-			}
+		assertTrue(CourseCreator.wishNotFullfilled.size()>0);
+		System.out.println(CourseCreator.wishNotFullfilled.size());
+		System.out.println(twentyCourses.get(0).getMaxSize());
+//		make sure that the size of wishNotFullfilled is 30 - maxSize of course0
+		assertTrue(CourseCreator.wishNotFullfilled.size() >= 30 - twentyCourses.get(0).getMaxSize());
+		for(Kurs c : twentyCourses) {
+			System.out.println(c);
+//			for(Schueler s : c.getSchueler()) {
+//				System.out.println(s.getWahl());
+//			}
+		}
+		System.out.println();
+		for(Schueler s :CourseCreator.wishNotFullfilled) {
+			System.out.println(s.getWahl());
 		}
 		
+		System.out.println(Kurs.getTotalNumberOfCourses());
 	}
 	
 	

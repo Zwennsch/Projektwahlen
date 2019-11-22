@@ -2,8 +2,10 @@ package com.svenjava.school;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 /**
  * test class that creates a choice (Wahl) of three different courses.urses.
@@ -31,6 +33,18 @@ public class RandomCourseCreator {
 		return new Wahl(randomCourseListWithNCourses.get(0), randomCourseListWithNCourses.get(1), randomCourseListWithNCourses.get(2));
 	}
 	
+	public static Wahl getThreeRandomCoursesFromCourseListWithNCourses(
+			List<Kurs> nCourses) {
+		randomCourseListWithNCourses = nCourses;
+		Set<Kurs> courses = new HashSet<>();
+		while(courses.size()<3) {
+			courses.add(randomCourseListWithNCourses.get(random.nextInt(randomCourseListWithNCourses.size())));
+		}
+		Kurs[] cs = (Kurs[]) courses.toArray();
+		return new Wahl( cs[0],cs[1], cs[2]);
+		
+	}
+	
 	static protected List<Kurs> getNCoursesWithRandomMaxSizes(int numberOfCourses){
 		randomCourseListWithNCourses = new ArrayList<>(numberOfCourses);
 		for(int i = 0; i < numberOfCourses; i++) {
@@ -42,7 +56,16 @@ public class RandomCourseCreator {
 	static Wahl getThreeKursesWithSameFirstWish()
 	{
 		List<Kurs> courses = getNCoursesWithRandomMaxSizes(20);
-		Kurs firstChoice = courses.get(0);
-		return new Wahl(firstChoice, courses.get(random.nextInt(courses.size())), courses.get(random.nextInt(courses.size())));
+		return getThreeKursesWithSameFirstWishFromListOfCourses(courses);
 	}
+
+	public static Wahl getThreeKursesWithSameFirstWishFromListOfCourses(
+			List<Kurs> randomCourseListWithTenToTwentyStudentsAndNCourses) {
+		
+		List<Kurs> courses = randomCourseListWithTenToTwentyStudentsAndNCourses;
+		Kurs firstChoice = courses.get(0);
+		return new Wahl(firstChoice, courses.get(random.nextInt(courses.size()-1)+1), courses.get(random.nextInt(courses.size()-1)+1));
+		
+	}
+
 }

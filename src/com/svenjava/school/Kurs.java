@@ -14,9 +14,9 @@ public class Kurs {
 	
 	public Kurs(String name, int maxSize) {
 		this.name = name;
-		totalNumberOfCourses++;
 		this.attendents = new ArrayList<>();
 		this.maxSize = maxSize;
+		totalNumberOfCourses++;
 	}
 	
 	public static int getTotalNumberOfCourses() {
@@ -62,7 +62,7 @@ public class Kurs {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return this.name;
+		return this.name + "; capacity: "+ this.maxSize + "; actual size: "+ this.getActualSize();
 	}
 	
 	@Override

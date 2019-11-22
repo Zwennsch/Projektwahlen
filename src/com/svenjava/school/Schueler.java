@@ -25,12 +25,12 @@ public class Schueler {
 		this.stufe = klasse;
 		
 	}
-//	public Schueler(String vorname,String nachname,  Klassenstufe klasse) {
-//		this.id = totalNumber++;
-//		this.vorname = vorname;
-//		this.nachname = nachname;
-//		this.stufe = klasse;
-//	}
+	public Schueler(String vorname,String nachname,  Klassenstufe klasse) {
+		this.id = totalNumber++;
+		this.vorname = vorname;
+		this.nachname = nachname;
+		this.stufe = klasse;
+	}
 	
 	public void makeWahl(Wahl w) {
 		this.wahl = w;

@@ -27,12 +27,15 @@ public class CourseCreator {
 	static List<Schueler> wishNotFullfilled;
 	Random random = new Random();
 	
+	static {
+		wishNotFullfilled = new ArrayList<>();
+	}
+	
 	public CourseCreator(List<Schueler> alleSchueler, List<Kurs>  courses) {
 		tenThGraders = createNthGraders(alleSchueler, Klassenstufe.ZEHN);
 		eigthAndNinthThGraders = createNthGraders(alleSchueler, Klassenstufe.ACHT);
 		eigthAndNinthThGraders.addAll(createNthGraders(alleSchueler, Klassenstufe.NEUN));
 		finalCoursestoFill = courses;
-//		firstExampleCourses = List.copyOf(courses);
 	}
 	
 	public static void calculateCourses() {
@@ -58,7 +61,6 @@ public class CourseCreator {
 	 * @param justWishes the List of courses filled up with students depending on their wishes
 	 */
 	static void refactorIfCourseFull(List<Kurs> justWishes) {
-		wishNotFullfilled = new ArrayList<>();
 		for(Kurs c : justWishes) {
 			if(c.getMaxSize() < c.getActualSize()) {
 				int toMany = c.getActualSize() - c.getMaxSize();
@@ -70,13 +72,13 @@ public class CourseCreator {
 				}
 			}
 //			distribute students depending on their second and third wish if possible
-		}if(!wishNotFullfilled.isEmpty()) {
-			int wish = 2;
-			do {
-				fillCoursesWithSecondOrThirdWish(justWishes, wish);
-				wish++;
-			}while(wishNotFullfilled.isEmpty() || wish > 3);
-			wish++;
+//		}if(!wishNotFullfilled.isEmpty()) {
+//			int wish = 2;
+//			do {
+//				fillCoursesWithSecondOrThirdWish(justWishes, wish);
+//				wish++;
+//			}while(wishNotFullfilled.isEmpty() || wish > 3);
+//			wish++;
 		}
 	}
 

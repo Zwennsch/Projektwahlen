@@ -8,7 +8,7 @@ public class Wahl {
 	Kurs zweitWahl;
 	Kurs drittWahl;
 	
-	Kurs[]wahl;
+	Kurs[] wahl;
 
 	public Wahl(Kurs k1, Kurs k2, Kurs k3) {
 		this.erstWahl = k1;
