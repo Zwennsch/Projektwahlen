@@ -57,8 +57,7 @@ class CourseCreatorTest {
 	@Test
 	void testFillInStudentsDependingOnWish() {
 //		create 300 random students and 20 random courses
-		schuelerList = StudentListCreator.getNStudentsWithEqualNthGraders(300);
-//		randomCourseListWithTenToTwentyStudentsAndNCourses = RandomCourseCreator.getNCoursesWithRandomMaxSizes(20);
+		schuelerList = StudentListCreator.getNStudentsWithEqualNthGradersWithWahl(300, twentyCourses);
 //		create a list of 10thgraders
 		List<Schueler> tenth = CourseCreator.createNthGraders(schuelerList, Klassenstufe.ZEHN);
 //		make sure, that every tenth grader gets its first choice:

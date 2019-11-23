@@ -2,8 +2,11 @@ package com.svenjava.school;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
@@ -36,12 +39,14 @@ public class RandomCourseCreator {
 	public static Wahl getThreeRandomCoursesFromCourseListWithNCourses(
 			List<Kurs> nCourses) {
 		randomCourseListWithNCourses = nCourses;
-		Set<Kurs> courses = new HashSet<>();
+		List<Kurs> courses = new ArrayList<>();
 		while(courses.size()<3) {
-			courses.add(randomCourseListWithNCourses.get(random.nextInt(randomCourseListWithNCourses.size())));
+			Kurs c = randomCourseListWithNCourses.get(random.nextInt(randomCourseListWithNCourses.size()));
+			if(!courses.contains(c)) {
+				courses.add(c);
+			}
 		}
-		Kurs[] cs = (Kurs[]) courses.toArray();
-		return new Wahl( cs[0],cs[1], cs[2]);
+		return new Wahl(courses.get(0), courses.get(1), courses.get(2));
 		
 	}
 	

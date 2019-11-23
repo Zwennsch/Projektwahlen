@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Schueler {
 	
-	private static int totalNumber = 0;
+	protected static int totalNumber;
 	private int id;
 	private String vorname;
 	private String nachname;
@@ -55,6 +55,7 @@ public class Schueler {
 	public String getNachname() {
 		return this.nachname;
 	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

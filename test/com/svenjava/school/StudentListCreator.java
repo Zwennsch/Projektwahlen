@@ -16,7 +16,7 @@ public class StudentListCreator {
 	static List<Schueler> getNStudentsWithGradeWithWahl(int number, Klassenstufe grade, List<Kurs> nCourses){
 		List<Schueler> students = new ArrayList<>();
 		for (int i = 0; i < number ; i++) {
-			students.add(new Schueler("vorname"+i, "nachname"+i, grade, RandomCourseCreator.getThreeRandomCoursesFromCourseListWithNCourses(nCourses)));
+			students.add(new Schueler("vorname"+Schueler.totalNumber, "nachname"+Schueler.totalNumber, grade, RandomCourseCreator.getThreeRandomCoursesFromCourseListWithNCourses(nCourses)));
 		}
 		return students;
 	}
@@ -46,7 +46,7 @@ public class StudentListCreator {
 	private static List<Schueler> getNStudentsWithGrade(int totalNumberOfStudents, Klassenstufe grade){
 		List<Schueler> students = new ArrayList<>(totalNumberOfStudents);
 		for (int i = 0; i < totalNumberOfStudents ; i++) {
-			students.add(new Schueler("vorname"+i, "nachname"+i, grade));
+			students.add(new Schueler("vorname"+Schueler.totalNumber, "nachname"+Schueler.totalNumber, grade));
 		}
 		return students;
 	}

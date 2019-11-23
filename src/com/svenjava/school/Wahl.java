@@ -8,16 +8,16 @@ public class Wahl {
 	Kurs zweitWahl;
 	Kurs drittWahl;
 	
-	Kurs[] wahl;
+//	Kurs[] wahl;
 
 	public Wahl(Kurs k1, Kurs k2, Kurs k3) {
 		this.erstWahl = k1;
 		this.zweitWahl = k2;
 		this.drittWahl = k3;
-		wahl = new Kurs[3];
-		wahl[0] = k1;
-		wahl[1] = k1;
-		wahl[2] = k1;
+//		wahl = new Kurs[3];
+//		wahl[0] = k1;
+//		wahl[1] = k1;
+//		wahl[2] = k1;
 	}
 	
 	@Override
