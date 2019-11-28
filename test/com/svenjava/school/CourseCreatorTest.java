@@ -37,6 +37,7 @@ class CourseCreatorTest {
 
 	@AfterEach
 	void tearDown() throws Exception {
+		CourseCreator.wishNotFullfilled.clear();
 	}
 	
 	@Test 
@@ -71,10 +72,10 @@ class CourseCreatorTest {
 		}
 	}
 	
-	@RepeatedTest(1)
+	@RepeatedTest(5)
 	void testRefactorIfCourseIsfull() {
 		List<Schueler> students = new ArrayList<>();
-//		create 100 students where at least 30 of them have the same first wish;
+//		create 100 students where at least 30 of them have the same first wish, wich is Kurs1;
 		students = StudentListCreator.getNStudentsWithNthGradeWithEqalFirstWish(30, Klassenstufe.ZEHN, twentyCourses);
 		students.addAll(StudentListCreator.getNStudentsWithGradeWithWahl(70, Klassenstufe.ZEHN, twentyCourses));
 //		add all the students to their courses
@@ -92,12 +93,6 @@ class CourseCreatorTest {
 		System.out.println(twentyCourses.get(0).getMaxSize());
 //		make sure that the size of wishNotFullfilled is 30 - maxSize of course0
 		assertTrue(CourseCreator.wishNotFullfilled.size() >= 30 - twentyCourses.get(0).getMaxSize());
-		for(Kurs c : twentyCourses) {
-			System.out.println(c);
-//			for(Schueler s : c.getSchueler()) {
-//				System.out.println(s.getWahl());
-//			}
-		}
 		System.out.println();
 		for(Schueler s :CourseCreator.wishNotFullfilled) {
 			System.out.println(s.getWahl());
@@ -105,7 +100,19 @@ class CourseCreatorTest {
 		
 		System.out.println(Kurs.getTotalNumberOfCourses());
 	}
-	
+	@Test
+	void testFillCoursesWithSecondOrThirdWishFromWishNotFullFilledList() {
+		
+//		assert that wishNotFullfilled isnt't empty
+		System.out.println(CourseCreator.wishNotFullfilled.size());
+		assertTrue(CourseCreator.wishNotFullfilled.size()>0);
+//		assert that every student from  wishNotFullfilled is put into second wish course
+		for(Schueler s : CourseCreator.wishNotFullfilled) {
+			Kurs k = s.getWahl().zweitWahl;
+			assertTrue(k.isPartOfCourse(s));
+		}
+		
+	}
 	
 
 	@Test

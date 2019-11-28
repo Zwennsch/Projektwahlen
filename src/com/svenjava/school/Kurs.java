@@ -30,9 +30,13 @@ public class Kurs {
 		attendents.add(schueler);
 		
 	}
-//	public Kurs getKursByName(String name) {
-//		return.
-//	}
+	
+	public boolean isPartOfCourse(Schueler s) {
+		if(attendents.contains(s)) {
+			return true;
+		}
+		return false;
+	}
 	public boolean removeSchueler(Schueler s) {
 		if (attendents.contains(s)) {
 			attendents.remove(s);
