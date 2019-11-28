@@ -66,7 +66,11 @@ public class Kurs {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return this.name + "; capacity: "+ this.maxSize + "; actual size: "+ this.getActualSize();
+		return this.name ;
+		/*
+		 * + "; capacity: "+ this.maxSize + "; actual size: "+ this.getActualSize();
+		 * this was just for testing
+		 */
 	}
 	
 	@Override
