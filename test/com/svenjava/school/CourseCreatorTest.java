@@ -3,8 +3,11 @@ package com.svenjava.school;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -19,6 +22,7 @@ import org.junit.jupiter.api.Test;
 class CourseCreatorTest {
 	static List<Schueler> schuelerList;
 	static List<Kurs> twentyCourses;
+	static Random random;
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -102,10 +106,34 @@ class CourseCreatorTest {
 	}
 	@Test
 	void testFillCoursesWithSecondOrThirdWishFromWishNotFullFilledList() {
+//		Create 300 students with random courses, 100 for every grade;
+		schuelerList = StudentListCreator.getNStudentsWithEqualNthGradersWithWahl(300, twentyCourses);
+		System.out.println(schuelerList.size());
+		System.out.println(twentyCourses.size());
+//		fillCourseList with students depending on first wish
+		CourseCreator.fillInStudentsDependingOnWish(schuelerList, twentyCourses);
+		random = new Random();
+	
+//		create  for those getting in WishNotFullfilled
+		CourseCreator.wishNotFullfilled = schuelerList.stream()
+				.filter(s -> s.getId()%(schuelerList.size()/30) == 0)
+				.collect(Collectors.toList());
 		
-//		assert that wishNotFullfilled isnt't empty
-		System.out.println(CourseCreator.wishNotFullfilled.size());
-		assertTrue(CourseCreator.wishNotFullfilled.size()>0);
+		schuelerList = schuelerList.stream()
+				.filter(s -> s.getId()%(schuelerList.size()/30) != 0)
+				.collect(Collectors.toList());
+			
+//		Iterator<Schueler> it = schuelerList.iterator();
+//		for(int i = 0; i< numberOfWishNotFullfilled ; i++) {
+//			int r = random.nextInt(schuelerList.size());
+//			CourseCreator.wishNotFullfilled.add(schuelerList.get(r));
+//			schuelerList.remove(r);
+//		}
+//		assert that wishNotFullfilled has n students
+//		assertTrue(CourseCreator.wishNotFullfilled.size() == numberOfWishNotFullfilled);
+		assertTrue(CourseCreator.wishNotFullfilled.size() + schuelerList.size() == 300);
+//		let the method do its job:
+		CourseCreator.fillCoursesWithSecondOrThirdWish(twentyCourses, 2);
 //		assert that every student from  wishNotFullfilled is put into second wish course
 		for(Schueler s : CourseCreator.wishNotFullfilled) {
 			Kurs k = s.getWahl().zweitWahl;

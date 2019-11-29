@@ -82,7 +82,7 @@ public class CourseCreator {
 		}
 	}
 
-	private static void fillCoursesWithSecondOrThirdWish(List<Kurs> justWishes, int wishNumber) {
+	static void fillCoursesWithSecondOrThirdWish(List<Kurs> justWishes, int wishNumber) {
 		for(Schueler s : wishNotFullfilled) {
 			Kurs second = s.getWahl().zweitWahl;
 			for(Kurs c: justWishes) {
