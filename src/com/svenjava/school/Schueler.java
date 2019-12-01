@@ -99,6 +99,7 @@ public class Schueler {
 		return finalCourse;
 	}
 	public void setFinalCourse(Kurs finalCourse) {
+		
 		this.finalCourse = finalCourse;
 	}
 	
