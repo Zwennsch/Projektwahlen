@@ -2,9 +2,11 @@ package com.svenjava.school;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -41,6 +43,7 @@ public class CourseCreator {
 	public static void calculateCourses() {
 //		first: distruíbute the 10th graders
 		distributeNthGraders(tenThGraders, finalCoursestoFill);
+		distributeNthGraders(eigthAndNinthThGraders, finalCoursestoFill);
 	}
 	
 	public static List<Schueler> createNthGraders(List<Schueler> alle, Klassenstufe stufe) {
@@ -97,6 +100,9 @@ public class CourseCreator {
 	}
 
 	static void fillInStudentsDependingOnWish(List<Schueler> schuelerList, List<Kurs> coursToBeFilledOnWish) {
+		Set<Schueler> studentsSet = new HashSet<>(schuelerList);
+//		Collections.shuffle(studentsSet);
+		for(int i = 0; i < schuelerList.size(); i++)
 		for(Schueler s : schuelerList) {
 			Kurs course = s.getWahl().erstWahl;
 			Iterator<Kurs> iterator = coursToBeFilledOnWish.iterator();
