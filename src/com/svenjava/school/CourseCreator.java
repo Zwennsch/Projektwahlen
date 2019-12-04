@@ -27,7 +27,7 @@ public class CourseCreator {
 	static List<Schueler> tenThGraders;
 	static List<Schueler> eigthAndNinthThGraders;
 	static List<Schueler> wishNotFullfilled;
-	Random random = new Random();
+	static Random random = new Random();
 	
 	static {
 		wishNotFullfilled = new ArrayList<>();
@@ -41,11 +41,16 @@ public class CourseCreator {
 	}
 	
 	public static void calculateCourses() {
-//		first: distruíbute the 10th graders
+//		first: distribute the 10th graders
 		distributeNthGraders(tenThGraders, finalCoursestoFill);
 		distributeNthGraders(eigthAndNinthThGraders, finalCoursestoFill);
 	}
-	
+	/**
+	 * 
+	 * @param alle list with all students
+	 * @param stufe the grade of the students you wish to return
+	 * @return the list of students that consists of students only with nth grade
+	 */
 	public static List<Schueler> createNthGraders(List<Schueler> alle, Klassenstufe stufe) {
 		Predicate<Schueler> byGrade = schueler -> schueler.getKlassenstufe() == stufe;
 		return alle.stream().filter(byGrade).collect(Collectors.toList());
@@ -100,20 +105,33 @@ public class CourseCreator {
 	}
 
 	static void fillInStudentsDependingOnWish(List<Schueler> schuelerList, List<Kurs> coursToBeFilledOnWish) {
-		Set<Schueler> studentsSet = new HashSet<>(schuelerList);
-//		Collections.shuffle(studentsSet);
-		for(int i = 0; i < schuelerList.size(); i++)
-		for(Schueler s : schuelerList) {
-			Kurs course = s.getWahl().erstWahl;
-			Iterator<Kurs> iterator = coursToBeFilledOnWish.iterator();
-			while(iterator.hasNext()) {
-				Kurs it = iterator.next();
-				if(it.equals(course)) {
-					it.addSchuelerToKurs(s);
-					break;
-				}
-			}
+		Set<Integer> studentsIDSet = new HashSet<>();
+		for(int i = 0; i < schuelerList.size(); i++) {
+			studentsIDSet.add(schuelerList.get(i).getId());
 		}
+		
+		while(!studentsIDSet.isEmpty()) {
+			int id = random.nextInt(studentsIDSet.size());
+//			Schueler s = schuelerList.stream().findAny()
+		}
+		
+		
+		
+		
+//		old method, I might have to save for later...
+		
+//		for(int i = 0; i < schuelerList.size(); i++)
+//		for(Schueler s : schuelerList) {
+//			Kurs course = s.getWahl().erstWahl;
+//			Iterator<Kurs> iterator = coursToBeFilledOnWish.iterator();
+//			while(iterator.hasNext()) {
+//				Kurs it = iterator.next();
+//				if(it.equals(course)) {
+//					it.addSchuelerToKurs(s);
+//					break;
+//				}
+//			}
+//		}
 	}
 	
 	static void distributeRandomlyIfCourseFull(List<Kurs> exampleCourses) {
