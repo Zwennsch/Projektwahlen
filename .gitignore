@@ -105,5 +105,9 @@ hs_err_pid*
 
 # changed studentList.txt
 studentList.txt
+
+# vscode files
+.vscode/
 # End of https://www.gitignore.io/api/java,eclipse
+
 
