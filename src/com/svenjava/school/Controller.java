@@ -115,7 +115,7 @@ public class Controller {
 	private void saveState(ActionEvent e) {
 		/*
 		 * Still to implement: Append to an already existing file! So far the file gets overridden every time user saves the current state
-		 * But this actually isn't much of a problem as long as th user loads the already existing file in advance..
+		 * But this actually isn't much of a problem as long as the user loads the already existing file in advance..
 		 * Still not sure how to implement this
 		 */
 		System.out.println("Saving");
