@@ -14,7 +14,6 @@ public class FxMain extends Application {
 	String pathToStudentsSavedFile = "src/com/svenjava/school/files/studentList.txt";
 	@Override
 	public void init() throws Exception {
-		// TODO Auto-generated method stub
 		super.init();
 		DataHandler.loadCoursesIntoList(coursesList);
 		Schueler.alleSchueler = new ArrayList<Schueler>();
@@ -30,10 +29,9 @@ public class FxMain extends Application {
 		stage.setScene(scene);
 		stage.setTitle("WP-Kurswahl");
 		stage.setResizable(false);
-		
 		stage.show();
-		
 	}
+	
 	@Override
 	public void stop() throws Exception {
 		System.out.println("Saveing automatically");

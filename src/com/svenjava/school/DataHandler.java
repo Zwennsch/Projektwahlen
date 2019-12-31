@@ -7,16 +7,21 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.List;
 
 public class DataHandler {
 	static BufferedReader br;
 	static BufferedWriter bw;
+	static File coursesFile, studentsFile;
 	
 	
 	static void loadCoursesIntoList(List<Kurs> coursesList) throws NumberFormatException, IOException {
 		try {
-			br = new BufferedReader(new FileReader(new File("src/com/svenjava/school/files/courses.txt")));
+			coursesFile = new File("src/com/svenjava/school/files/courses.txt");
+			br = new BufferedReader(new FileReader(coursesFile));
 			String line;
 			while((line=br.readLine())!= null) {
 				String[] data = line.split(",");
@@ -31,20 +36,18 @@ public class DataHandler {
 	}
 	
 	static void saveStudentsToFile(List<Schueler> studentsSoFar, String fileName) throws IOException {
-		File f = new File(fileName);
+		studentsFile = new File(fileName);
 		try {
-			if(f.createNewFile()) {
-				System.out.println("File created: "+ f.getName());
+			if(studentsFile.createNewFile()) {
+				System.out.println("File created: "+ studentsFile.getName());
 			}else {
 				System.out.println("File exists already");
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			System.out.println("Wrong path");
 			e.printStackTrace();
 		}
-		
-		bw = new BufferedWriter(new FileWriter(f));
+		bw = new BufferedWriter(new FileWriter(studentsFile));
 		System.out.println("Writing to file...");
 		for (Schueler s : studentsSoFar) {
 			String line = s.getId()+"," +s.getVorname()+ "," + s.getNachname()+ ","+ s.getKlassenstufe()+","
@@ -63,9 +66,9 @@ public class DataHandler {
 	 * @throws IOException
 	 */
 	static void readStudentDataFromFile(String fileName) throws IOException {
-		File f = new File(fileName);
-		if(f.exists()) {
-			br = new BufferedReader(new FileReader(f));
+		studentsFile = new File(fileName);
+		if(studentsFile.exists()) {
+			br = new BufferedReader(new FileReader(studentsFile));
 			String line;
 			while((line=br.readLine())!= null) {
 				String[] data = line.split(",");
@@ -88,8 +91,18 @@ public class DataHandler {
 			}
 			br.close();
 		}
-		
-		
+	}
+	
+	static void appendLine(Schueler s) {
+		String studentData = s.getId()+"," +s.getVorname()+ "," + s.getNachname()+ ","+ s.getKlassenstufe()+","
+				+ s.getWahl().erstWahl+","+s.getWahl().zweitWahl+","+ s.getWahl().drittWahl+ "\n";
+		try {
+			Files.write(Paths.get(studentsFile.getPath()), studentData.getBytes(), StandardOpenOption.APPEND);
+			System.out.println("name appended");
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("Something went wrong!!");
+		}
 	}
 
 }

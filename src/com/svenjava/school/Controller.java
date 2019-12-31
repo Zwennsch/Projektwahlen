@@ -66,6 +66,7 @@ public class Controller {
 			Wahl w = new Wahl(k1, k2, k3);
 			Schueler s = new Schueler(name, nachN, stufe, w);
 			Schueler.alleSchueler.add(s);
+			DataHandler.appendLine(s);
 			confirmed.setHeaderText("O.K. "+name+", Eintrag gespeichert");
 			confirmed.show();
 			System.out.println(s.getId());
