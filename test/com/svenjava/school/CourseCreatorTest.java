@@ -141,6 +141,24 @@ class CourseCreatorTest {
 		}
 		
 	}
+	@Test
+	void shouldFillCoursesWithStudents() {
+		List<Schueler> studs = StudentListCreator.getNStudentsWithEqualNthGradersWithWahl(30, twentyCourses);
+		//make sure courses are empty;
+		for(Kurs c : twentyCourses) {
+			assertTrue(c.getActualSize()== 0);
+		}
+		//make sure wishNotFullfilled is empty
+		assertTrue(CourseCreator.wishNotFullfilled.size()== 0);
+//		make sure, all students are distributed
+		CourseCreator.fillInStudentsDependingOnWish(studs, twentyCourses);
+		int counter = 0;
+		for(Kurs c : twentyCourses) {
+			counter += c.getActualSize();
+		}
+		System.out.println(counter);
+		
+	}
 	
 
 	@Test

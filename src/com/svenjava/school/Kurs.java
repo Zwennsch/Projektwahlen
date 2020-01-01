@@ -10,8 +10,6 @@ public class Kurs {
 	private List<Schueler> attendents;
 	private int maxSize;
 	
-	
-	
 	public Kurs(String name, int maxSize) {
 		this.name = name;
 		this.attendents = new ArrayList<>();

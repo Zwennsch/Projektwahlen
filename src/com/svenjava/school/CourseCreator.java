@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 import java.util.Set;
 import java.util.function.Predicate;
@@ -16,7 +17,7 @@ import java.util.stream.Collectors;
  * 	1. The maximum amount of students is to be respected for every course
  * 	2. Each 10th grader should get his primary choice.
  * 	3. If the primary choice isn't possible, then each 10th grader should get his secondary choice and if this isn't possible the third choice.
- * 	4. The other students should get there primary wishes, after the 10th graders.
+ * 	4. The other students should get their primary wishes, after the 10th graders.
  * 
  * @author Sven Schroeder
  * {@summary Calculates the composition of the courses depending on the election by students }
@@ -43,6 +44,7 @@ public class CourseCreator {
 	public static void calculateCourses() {
 //		first: distribute the 10th graders
 		distributeNthGraders(tenThGraders, finalCoursestoFill);
+//		second: distribute the 8th and 9th graders equally
 		distributeNthGraders(eigthAndNinthThGraders, finalCoursestoFill);
 	}
 	/**
@@ -60,6 +62,72 @@ public class CourseCreator {
 	private static void distributeNthGraders(List<Schueler> schuelerList, List<Kurs> coursesToBeFilled) {
 		fillInStudentsDependingOnWish(schuelerList, coursesToBeFilled);
 		refactorIfCourseFull(coursesToBeFilled);
+	}
+	/**
+	 * should fill the courses depending on the students wishes. It picks a random student from the list, and checks
+	 * its first wish. If the course still has at least one space left, the students gets added. If not the students 
+	 * second wish gets checked. If even the course regarding the students third wish should be out of space
+	 * the student gets added to the whisNotfullFilled list of student
+	 * 
+	 * @param schuelerList the list of students to be filled into courses
+	 * @param coursToBeFilledOnWish the courses to be filled with students wishes
+	 */
+	static void fillInStudentsDependingOnWish(List<Schueler> schuelerList, List<Kurs> coursToBeFilledOnWish) {
+		//create a HashSet with the students Id's 
+		Set<Integer> studentsIDSet = new HashSet<>();
+		for(int i = 0; i < schuelerList.size(); i++) {
+			studentsIDSet.add(schuelerList.get(i).getId());
+		}
+		
+		while(!studentsIDSet.isEmpty()) {
+			int id = random.nextInt(studentsIDSet.size());
+			Predicate<Schueler> byId = schueler -> schueler.getId() == id;
+			Optional<Schueler> s = schuelerList.stream()
+					.filter(byId).findFirst();
+			Schueler stud = s.get();
+			Kurs first = stud.getWahl().erstWahl;
+			Kurs second = stud.getWahl().zweitWahl;
+			Kurs third = stud.getWahl().drittWahl;
+			if(!first.isFull()) {
+				stud.setFinalCourse(first);
+				first.addSchuelerToKurs(stud);
+				studentsIDSet.remove(id);
+				continue;
+			}else{
+				if(!second.isFull()) {
+					stud.setFinalCourse(second);
+					second.addSchuelerToKurs(stud);
+					studentsIDSet.remove(id);
+					continue;
+				}else if(!third.isFull()) {
+					stud.setFinalCourse(third);
+					third.addSchuelerToKurs(stud);
+					studentsIDSet.remove(id);
+				}else {
+					wishNotFullfilled.add(stud);
+					studentsIDSet.remove(id);
+				}
+			}
+			
+		}
+		
+		
+		
+		
+//		old method, I might have to save for later...
+		
+//		for(int i = 0; i < schuelerList.size(); i++)
+//		for(Schueler s : schuelerList) {
+//			Kurs course = s.getWahl().erstWahl;
+//			Iterator<Kurs> iterator = coursToBeFilledOnWish.iterator();
+//			while(iterator.hasNext()) {
+//				Kurs it = iterator.next();
+//				if(it.equals(course)) {
+//					it.addSchuelerToKurs(s);
+//					break;
+//				}
+//			}
+//		}
 	}
 	
 	
@@ -104,35 +172,6 @@ public class CourseCreator {
 		}
 	}
 
-	static void fillInStudentsDependingOnWish(List<Schueler> schuelerList, List<Kurs> coursToBeFilledOnWish) {
-		Set<Integer> studentsIDSet = new HashSet<>();
-		for(int i = 0; i < schuelerList.size(); i++) {
-			studentsIDSet.add(schuelerList.get(i).getId());
-		}
-		
-		while(!studentsIDSet.isEmpty()) {
-			int id = random.nextInt(studentsIDSet.size());
-//			Schueler s = schuelerList.stream().findAny()
-		}
-		
-		
-		
-		
-//		old method, I might have to save for later...
-		
-//		for(int i = 0; i < schuelerList.size(); i++)
-//		for(Schueler s : schuelerList) {
-//			Kurs course = s.getWahl().erstWahl;
-//			Iterator<Kurs> iterator = coursToBeFilledOnWish.iterator();
-//			while(iterator.hasNext()) {
-//				Kurs it = iterator.next();
-//				if(it.equals(course)) {
-//					it.addSchuelerToKurs(s);
-//					break;
-//				}
-//			}
-//		}
-	}
 	
 	static void distributeRandomlyIfCourseFull(List<Kurs> exampleCourses) {
 		
