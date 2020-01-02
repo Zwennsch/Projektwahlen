@@ -151,12 +151,12 @@ class CourseCreatorTest {
 		//make sure wishNotFullfilled is empty
 		assertTrue(CourseCreator.wishNotFullfilled.size()== 0);
 //		make sure, all students are distributed
-		CourseCreator.fillInStudentsDependingOnWish(studs, twentyCourses);
-		int counter = 0;
-		for(Kurs c : twentyCourses) {
-			counter += c.getActualSize();
-		}
-		System.out.println(counter);
+//		CourseCreator.fillInStudentsDependingOnWish(studs, twentyCourses);
+//		int counter = 0;
+//		for(Kurs c : twentyCourses) {
+//			counter += c.getActualSize();
+//		}
+//		System.out.println(counter);
 		
 	}
 	
