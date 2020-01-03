@@ -42,6 +42,7 @@ class CourseCreatorTest {
 	@AfterEach
 	void tearDown() throws Exception {
 		CourseCreator.wishNotFullfilled.clear();
+		
 	}
 	
 	@Test 
@@ -143,20 +144,35 @@ class CourseCreatorTest {
 	}
 	@Test
 	void shouldFillCoursesWithStudents() {
-		List<Schueler> studs = StudentListCreator.getNStudentsWithEqualNthGradersWithWahl(30, twentyCourses);
+		int numberStudents = 300;
+		List<Schueler> studs = StudentListCreator.getNStudentsWithEqualNthGradersWithWahl(numberStudents, twentyCourses);
+		new CourseCreator(studs, twentyCourses);
 		//make sure courses are empty;
-		for(Kurs c : twentyCourses) {
+		for(Kurs c : CourseCreator.finalCoursestoFill) {
 			assertTrue(c.getActualSize()== 0);
 		}
 		//make sure wishNotFullfilled is empty
 		assertTrue(CourseCreator.wishNotFullfilled.size()== 0);
 //		make sure, all students are distributed
-//		CourseCreator.fillInStudentsDependingOnWish(studs, twentyCourses);
-//		int counter = 0;
-//		for(Kurs c : twentyCourses) {
-//			counter += c.getActualSize();
-//		}
-//		System.out.println(counter);
+		CourseCreator.fillInStudentsDependingOnWish(CourseCreator.allStudents, CourseCreator.finalCoursestoFill);
+		int counter = 0;
+		for(Kurs c : CourseCreator.finalCoursestoFill) {
+			counter += c.getActualSize();
+		}
+		counter += CourseCreator.wishNotFullfilled.size();
+		assertEquals(numberStudents, counter);
+		
+		System.out.println(CourseCreator.wishNotFullfilled);
+		System.out.println("Anzahl der Schüler ohne erfolgreiche Zuordnung: "+CourseCreator.wishNotFullfilled.size());
+		System.out.println("Anzahl aller Schueler: " +Schueler.totalNumber);
+		int coursesFull = 0;
+		for(Kurs k : CourseCreator.finalCoursestoFill) {
+			if(k.isFull()) {
+				coursesFull++;
+				System.out.println(k.toString() + "; size: "+ k.getActualSize()+ "; maxSize: "+ k.getMaxSize());
+			}
+		}
+		System.out.println("Kurse voll besetzt: "+ coursesFull);
 		
 	}
 	

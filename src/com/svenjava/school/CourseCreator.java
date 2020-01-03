@@ -25,6 +25,7 @@ import java.util.stream.Collectors;
 public class CourseCreator {
 	
 	static List<Kurs> finalCoursestoFill;
+	static List<Schueler> allStudents;
 	static List<Schueler> tenThGraders;
 	static List<Schueler> eigthAndNinthThGraders;
 	static List<Schueler> wishNotFullfilled;
@@ -35,6 +36,7 @@ public class CourseCreator {
 	}
 	
 	public CourseCreator(List<Schueler> alleSchueler, List<Kurs>  courses) {
+		allStudents = alleSchueler;
 		tenThGraders = createNthGraders(alleSchueler, Klassenstufe.ZEHN);
 		eigthAndNinthThGraders = createNthGraders(alleSchueler, Klassenstufe.ACHT);
 		eigthAndNinthThGraders.addAll(createNthGraders(alleSchueler, Klassenstufe.NEUN));
@@ -74,13 +76,14 @@ public class CourseCreator {
 	 */
 	static void fillInStudentsDependingOnWish(List<Schueler> schuelerList, List<Kurs> coursToBeFilledOnWish) {
 		//create a HashSet with the students Id's 
-		Set<Integer> studentsIDSet = new HashSet<>();
+		List<Integer> studentsIDSet = new ArrayList<>();
 		for(int i = 0; i < schuelerList.size(); i++) {
 			studentsIDSet.add(schuelerList.get(i).getId());
 		}
 		
+		Collections.shuffle(studentsIDSet);
 		while(!studentsIDSet.isEmpty()) {
-			int id = random.nextInt(studentsIDSet.size());
+			int id = studentsIDSet.get(0);
 			Predicate<Schueler> byId = schueler -> schueler.getId() == id;
 			Optional<Schueler> s = schuelerList.stream()
 					.filter(byId).findFirst();
@@ -91,21 +94,21 @@ public class CourseCreator {
 			if(!first.isFull()) {
 				stud.setFinalCourse(first);
 				first.addSchuelerToKurs(stud);
-				studentsIDSet.remove(id);
-				continue;
+				studentsIDSet.remove(0);
+//				continue;
 			}else{
 				if(!second.isFull()) {
 					stud.setFinalCourse(second);
 					second.addSchuelerToKurs(stud);
-					studentsIDSet.remove(id);
+					studentsIDSet.remove(0);
 					continue;
 				}else if(!third.isFull()) {
 					stud.setFinalCourse(third);
 					third.addSchuelerToKurs(stud);
-					studentsIDSet.remove(id);
+					studentsIDSet.remove(0);
 				}else {
 					wishNotFullfilled.add(stud);
-					studentsIDSet.remove(id);
+					studentsIDSet.remove(0);
 				}
 			}
 			
