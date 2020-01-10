@@ -1,0 +1,15 @@
+Liste der Schüler in Kurs: Kurs8
+vorname33 nachname33                         Kurs8              Kurs13              Kurs11
+vorname159 nachname159                       Kurs8               Kurs7              Kurs12
+vorname89 nachname89                         Kurs8              Kurs16               Kurs3
+vorname236 nachname236                       Kurs8               Kurs6               Kurs1
+vorname82 nachname82                         Kurs8              Kurs15               Kurs3
+vorname130 nachname130                       Kurs8              Kurs12              Kurs19
+vorname260 nachname260                       Kurs8              Kurs16               Kurs9
+vorname248 nachname248                       Kurs8               Kurs7              Kurs14
+vorname148 nachname148                       Kurs8               Kurs4              Kurs19
+vorname188 nachname188                       Kurs8              Kurs12              Kurs16
+vorname200 nachname200                       Kurs8               Kurs3               Kurs0
+vorname80 nachname80                         Kurs8              Kurs12               Kurs3
+vorname25 nachname25                         Kurs8              Kurs19              Kurs11
+vorname241 nachname241                       Kurs8               Kurs2              Kurs12

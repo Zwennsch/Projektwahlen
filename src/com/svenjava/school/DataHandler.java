@@ -104,5 +104,25 @@ public class DataHandler {
 			System.out.println("Something went wrong!!");
 		}
 	}
+	
+	static void saveCourses(List<Kurs> courses) throws IOException {
+		String pathToFinalCourses = "src/com/svenjava/school/files/finalCourses/";
+		for(Kurs course: courses) {
+			String pathToCourse = pathToFinalCourses+ course.getName()+".txt";
+			File courseFile = new File(pathToCourse);
+			courseFile.createNewFile();
+			bw = new BufferedWriter(new FileWriter(courseFile));
+			String line = "Liste der Schüler in Kurs: "+ course.getName();
+			bw.write(line);
+			bw.newLine();
+			for (Schueler student : course.getSchueler()) {
+				line = String.format("%1$-30s%2$20s%3$20s%4$20s", student.getName(), 
+						student.getWahl().erstWahl.toString(), student.getWahl().zweitWahl.toString(), student.getWahl().drittWahl.toString());
+				bw.write(line);
+				bw.newLine();
+			}
+			bw.close();
+		}
+	}
 
 }

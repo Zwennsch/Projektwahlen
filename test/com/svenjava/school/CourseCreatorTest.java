@@ -2,6 +2,7 @@ package com.svenjava.school;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -173,6 +174,12 @@ class CourseCreatorTest {
 			}
 		}
 		System.out.println("Kurse voll besetzt: "+ coursesFull);
+		try {
+			DataHandler.saveCourses(CourseCreator.finalCoursestoFill);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	

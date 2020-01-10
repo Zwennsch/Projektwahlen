@@ -132,11 +132,12 @@ public class Controller {
 		}
 	}
 	@FXML
-	private void calculateCourses(ActionEvent e) {
+	private void calculateCourses(ActionEvent e) throws IOException {
 		System.out.println("Calculating");
 		System.out.println(Schueler.alleSchueler.get(0));
 		new CourseCreator(Schueler.alleSchueler, FxMain.coursesList);
 		CourseCreator.calculateCourses();
+		DataHandler.saveCourses(CourseCreator.finalCoursestoFill);
 	}
 
 }

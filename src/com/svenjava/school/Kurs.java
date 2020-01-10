@@ -96,4 +96,9 @@ public class Kurs {
 		return true;
 	}
 
+	public String getName() {
+		// TODO Auto-generated method stub
+		return this.name;
+	}
+
 }
