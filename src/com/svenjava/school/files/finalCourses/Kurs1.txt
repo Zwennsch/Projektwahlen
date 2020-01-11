@@ -1,13 +1,16 @@
-Liste der Schüler in Kurs: Kurs1
-vorname291 nachname291                       Kurs1              Kurs15              Kurs12
-vorname29 nachname29                         Kurs1               Kurs4              Kurs15
-vorname242 nachname242                       Kurs1              Kurs16               Kurs7
-vorname250 nachname250                       Kurs1              Kurs19              Kurs10
-vorname177 nachname177                       Kurs1              Kurs12              Kurs10
-vorname191 nachname191                       Kurs1               Kurs0              Kurs11
-vorname51 nachname51                         Kurs1              Kurs17              Kurs13
-vorname113 nachname113                       Kurs1              Kurs11              Kurs15
-vorname94 nachname94                         Kurs1              Kurs19              Kurs10
-vorname32 nachname32                        Kurs12               Kurs4               Kurs1
-vorname197 nachname197                       Kurs1               Kurs8              Kurs14
-vorname54 nachname54                         Kurs1              Kurs15              Kurs18
+Liste der Schüler in Kurs: Kurs1                     Maximale Größe: 15 Anzahl der Schüler: 15
+vorname211 nachname211                   ZEHN               Kurs1              Kurs16              Kurs11
+vorname222 nachname222                   ZEHN               Kurs1               Kurs8              Kurs19
+vorname253 nachname253                   ZEHN               Kurs1              Kurs13              Kurs15
+vorname260 nachname260                   ZEHN               Kurs1               Kurs3              Kurs14
+vorname262 nachname262                   ZEHN               Kurs1               Kurs5              Kurs19
+vorname266 nachname266                   ZEHN               Kurs1              Kurs19               Kurs5
+vorname78 nachname78                     ACHT               Kurs1              Kurs14              Kurs15
+vorname66 nachname66                     ACHT               Kurs1               Kurs5              Kurs11
+vorname69 nachname69                     ACHT               Kurs1               Kurs9              Kurs14
+vorname133 nachname133                   NEUN               Kurs1              Kurs15               Kurs9
+vorname142 nachname142                   NEUN               Kurs1              Kurs17               Kurs2
+vorname99 nachname99                     ACHT               Kurs1              Kurs19              Kurs13
+vorname105 nachname105                   NEUN               Kurs1              Kurs10               Kurs2
+vorname125 nachname125                   NEUN               Kurs1              Kurs12               Kurs5
+vorname31 nachname31                     ACHT               Kurs1              Kurs18               Kurs6

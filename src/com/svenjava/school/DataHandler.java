@@ -10,9 +10,12 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class DataHandler {
+	static final String pathToFinalCourses = "src/com/svenjava/school/files/finalCourses/";
 	static BufferedReader br;
 	static BufferedWriter bw;
 	static File coursesFile, studentsFile;
@@ -102,27 +105,60 @@ public class DataHandler {
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println("Something went wrong!!");
+			
 		}
 	}
 	
 	static void saveCourses(List<Kurs> courses) throws IOException {
-		String pathToFinalCourses = "src/com/svenjava/school/files/finalCourses/";
 		for(Kurs course: courses) {
-			String pathToCourse = pathToFinalCourses+ course.getName()+".txt";
-			File courseFile = new File(pathToCourse);
-			courseFile.createNewFile();
-			bw = new BufferedWriter(new FileWriter(courseFile));
-			String line = "Liste der Schüler in Kurs: "+ course.getName();
+			saveCourse(pathToFinalCourses, course);
+		}
+		Kurs withoutWish = new Kurs("OhneWunsch", CourseCreator.allStudents.size());
+		CourseCreator.wishNotFullfilled.stream()
+			.forEach(s -> withoutWish.addSchuelerToKurs(s));
+		saveCourse(pathToFinalCourses, withoutWish);
+	}
+
+	private static void saveCourse(String pathToFinalCourses, Kurs course) throws IOException {
+		String pathToCourse = pathToFinalCourses+ course.getName()+".txt";
+		File courseFile = new File(pathToCourse);
+		courseFile.createNewFile();
+		FileWriter fw = new FileWriter(courseFile);
+		bw = new BufferedWriter(fw);
+		String line = String.format("Liste der Schüler in Kurs: %1$-25s Maximale Größe: %2$2d Anzahl der Schüler: %3$2d",
+				course.getName(), course.getMaxSize(), course.getSchueler().size());
+		bw.write(line);
+		bw.newLine();
+		for (Schueler student : course.getSchueler()) {
+			line = String.format("%1$-30s%5$15s%2$20s%3$20s%4$20s", student.getName(), 
+					student.getWahl().erstWahl.toString(), student.getWahl().zweitWahl.toString(), student.getWahl().drittWahl.toString(), student.getKlassenstufe());
 			bw.write(line);
 			bw.newLine();
-			for (Schueler student : course.getSchueler()) {
-				line = String.format("%1$-30s%2$20s%3$20s%4$20s", student.getName(), 
-						student.getWahl().erstWahl.toString(), student.getWahl().zweitWahl.toString(), student.getWahl().drittWahl.toString());
-				bw.write(line);
-				bw.newLine();
-			}
-			bw.close();
 		}
+		bw.close();
+		fw.close();
+	}
+
+	public static void saveFinalStudentList(List<Schueler> allStudents) throws IOException {
+		String pathToList = pathToFinalCourses +"allStudents.txt";
+		File allStudentsFile = new File(pathToList);
+		FileWriter fw = new FileWriter(allStudentsFile);
+		allStudentsFile.createNewFile();
+		bw = new BufferedWriter(fw);
+		Collections.sort(allStudents);
+		String firstLine = "Liste mit allen Schülern";
+		bw.write(firstLine);
+		bw.newLine();
+		for (Schueler s : allStudents) {
+			String line = String.format("%1$25s%2$20s%3$10s%4$30s", s.getNachname(), s.getVorname(),s.getKlassenstufe(), s.getFinalCourse());
+			bw.write(line);
+			bw.newLine();
+		}
+		bw.close();
+		fw.close();
+		
+		
+		
 	}
 
 }

@@ -1,12 +1,12 @@
-Liste der Schüler in Kurs: Kurs5
-vorname12 nachname12                         Kurs5               Kurs1              Kurs16
-vorname64 nachname64                         Kurs5              Kurs14              Kurs18
-vorname219 nachname219                       Kurs5              Kurs14               Kurs4
-vorname285 nachname285                       Kurs5              Kurs14               Kurs2
-vorname114 nachname114                       Kurs5              Kurs14               Kurs7
-vorname136 nachname136                       Kurs5              Kurs14               Kurs7
-vorname206 nachname206                       Kurs5              Kurs11               Kurs7
-vorname151 nachname151                       Kurs8               Kurs3               Kurs5
-vorname129 nachname129                       Kurs5              Kurs15              Kurs12
-vorname271 nachname271                       Kurs5               Kurs6              Kurs12
-vorname205 nachname205                       Kurs5               Kurs0               Kurs4
+Liste der Schüler in Kurs: Kurs5                     Maximale Größe: 11 Anzahl der Schüler: 11
+vorname235 nachname235                   ZEHN               Kurs5              Kurs17               Kurs2
+vorname216 nachname216                   ZEHN               Kurs5               Kurs4               Kurs2
+vorname249 nachname249                   ZEHN               Kurs5              Kurs16              Kurs13
+vorname261 nachname261                   ZEHN               Kurs5              Kurs17              Kurs11
+vorname200 nachname200                   ZEHN               Kurs5               Kurs3              Kurs10
+vorname241 nachname241                   ZEHN               Kurs5               Kurs9              Kurs16
+vorname274 nachname274                   ZEHN               Kurs5              Kurs11               Kurs0
+vorname252 nachname252                   ZEHN               Kurs5               Kurs4               Kurs3
+vorname256 nachname256                   ZEHN               Kurs5              Kurs18              Kurs11
+vorname161 nachname161                   NEUN               Kurs5               Kurs8              Kurs18
+vorname183 nachname183                   NEUN               Kurs5               Kurs0              Kurs16

@@ -138,6 +138,7 @@ public class Controller {
 		new CourseCreator(Schueler.alleSchueler, FxMain.coursesList);
 		CourseCreator.calculateCourses();
 		DataHandler.saveCourses(CourseCreator.finalCoursestoFill);
+		DataHandler.saveFinalStudentList(CourseCreator.allStudents);
 	}
 
 }

@@ -1,14 +1,13 @@
-Liste der Schüler in Kurs: Kurs7
-vorname41 nachname41                         Kurs7              Kurs12              Kurs19
-vorname108 nachname108                       Kurs7              Kurs14               Kurs2
-vorname55 nachname55                         Kurs7              Kurs11               Kurs3
-vorname37 nachname37                         Kurs7              Kurs11              Kurs15
-vorname138 nachname138                       Kurs7              Kurs11              Kurs19
-vorname1 nachname1                           Kurs7              Kurs14               Kurs8
-vorname68 nachname68                         Kurs7              Kurs13              Kurs14
-vorname254 nachname254                       Kurs7               Kurs8              Kurs16
-vorname184 nachname184                       Kurs7              Kurs13               Kurs4
-vorname259 nachname259                       Kurs7               Kurs9               Kurs5
-vorname50 nachname50                         Kurs3               Kurs7               Kurs8
-vorname9 nachname9                           Kurs7              Kurs13               Kurs1
-vorname63 nachname63                         Kurs7              Kurs10              Kurs15
+Liste der Schüler in Kurs: Kurs7                     Maximale Größe: 12 Anzahl der Schüler: 12
+vorname207 nachname207                   ZEHN               Kurs7               Kurs4               Kurs2
+vorname206 nachname206                   ZEHN               Kurs7              Kurs10              Kurs14
+vorname265 nachname265                   ZEHN               Kurs7               Kurs6              Kurs10
+vorname287 nachname287                   ZEHN               Kurs7               Kurs1               Kurs9
+vorname283 nachname283                   ZEHN               Kurs7              Kurs13               Kurs4
+vorname277 nachname277                   ZEHN               Kurs7               Kurs2               Kurs6
+vorname201 nachname201                   ZEHN               Kurs7              Kurs16               Kurs9
+vorname73 nachname73                     ACHT               Kurs7              Kurs15              Kurs10
+vorname16 nachname16                     ACHT               Kurs7               Kurs2              Kurs16
+vorname116 nachname116                   NEUN               Kurs7               Kurs5               Kurs4
+vorname106 nachname106                   NEUN               Kurs5               Kurs7               Kurs4
+vorname173 nachname173                   NEUN               Kurs7              Kurs19              Kurs10

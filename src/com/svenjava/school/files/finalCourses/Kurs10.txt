@@ -1,14 +1,16 @@
-Liste der Schüler in Kurs: Kurs10
-vorname52 nachname52                        Kurs10               Kurs2               Kurs4
-vorname47 nachname47                        Kurs10              Kurs17              Kurs18
-vorname143 nachname143                      Kurs10               Kurs4               Kurs9
-vorname69 nachname69                        Kurs10              Kurs13               Kurs0
-vorname276 nachname276                      Kurs10              Kurs11              Kurs17
-vorname293 nachname293                      Kurs10              Kurs16              Kurs18
-vorname244 nachname244                      Kurs10               Kurs1              Kurs19
-vorname167 nachname167                      Kurs10               Kurs3              Kurs16
-vorname174 nachname174                      Kurs10              Kurs15              Kurs13
-vorname224 nachname224                      Kurs10               Kurs9              Kurs19
-vorname181 nachname181                      Kurs10               Kurs8               Kurs2
-vorname133 nachname133                      Kurs10               Kurs0               Kurs8
-vorname182 nachname182                       Kurs4              Kurs10               Kurs7
+Liste der Schüler in Kurs: Kurs10                    Maximale Größe: 15 Anzahl der Schüler: 15
+vorname273 nachname273                   ZEHN              Kurs10               Kurs7              Kurs17
+vorname248 nachname248                   ZEHN              Kurs10               Kurs6               Kurs4
+vorname237 nachname237                   ZEHN              Kurs10               Kurs9               Kurs7
+vorname286 nachname286                   ZEHN              Kurs10               Kurs7              Kurs12
+vorname238 nachname238                   ZEHN              Kurs10               Kurs0              Kurs19
+vorname263 nachname263                   ZEHN              Kurs10              Kurs18               Kurs7
+vorname20 nachname20                     ACHT              Kurs10               Kurs5               Kurs8
+vorname186 nachname186                   NEUN              Kurs10              Kurs16              Kurs18
+vorname118 nachname118                   NEUN              Kurs10               Kurs5              Kurs16
+vorname162 nachname162                   NEUN              Kurs10              Kurs12               Kurs6
+vorname144 nachname144                   NEUN              Kurs10              Kurs15              Kurs17
+vorname170 nachname170                   NEUN              Kurs10              Kurs14              Kurs16
+vorname155 nachname155                   NEUN              Kurs10               Kurs7              Kurs16
+vorname90 nachname90                     ACHT               Kurs4              Kurs10               Kurs3
+vorname198 nachname198                   NEUN               Kurs9              Kurs10               Kurs7

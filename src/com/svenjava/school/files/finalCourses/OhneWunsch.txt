@@ -1,0 +1,9 @@
+Liste der Schüler in Kurs: OhneWunsch                Maximale Größe: 300 Anzahl der Schüler:  8
+vorname154 nachname154                   NEUN               Kurs2               Kurs7               Kurs1
+vorname163 nachname163                   NEUN              Kurs10               Kurs5               Kurs9
+vorname26 nachname26                     ACHT               Kurs1               Kurs2               Kurs4
+vorname177 nachname177                   NEUN              Kurs14              Kurs13               Kurs1
+vorname92 nachname92                     ACHT               Kurs1              Kurs12              Kurs10
+vorname157 nachname157                   NEUN               Kurs5              Kurs15               Kurs7
+vorname104 nachname104                   NEUN               Kurs4               Kurs2               Kurs5
+vorname6 nachname6                       ACHT               Kurs2               Kurs9               Kurs4

@@ -1,18 +1,16 @@
-Liste der Schüler in Kurs: Kurs16
-vorname137 nachname137                      Kurs16              Kurs19              Kurs13
-vorname275 nachname275                      Kurs16               Kurs1               Kurs5
-vorname106 nachname106                      Kurs16              Kurs14               Kurs7
-vorname116 nachname116                      Kurs16               Kurs2               Kurs3
-vorname44 nachname44                        Kurs16              Kurs15              Kurs19
-vorname79 nachname79                        Kurs16               Kurs9              Kurs11
-vorname15 nachname15                        Kurs16              Kurs12              Kurs17
-vorname158 nachname158                      Kurs16              Kurs19               Kurs7
-vorname147 nachname147                      Kurs16              Kurs13               Kurs0
-vorname42 nachname42                        Kurs16               Kurs8              Kurs13
-vorname286 nachname286                       Kurs3              Kurs16               Kurs1
-vorname121 nachname121                       Kurs2              Kurs16              Kurs12
-vorname289 nachname289                      Kurs18              Kurs16               Kurs1
-vorname243 nachname243                      Kurs12              Kurs16              Kurs17
-vorname175 nachname175                      Kurs11              Kurs15              Kurs16
-vorname111 nachname111                      Kurs16               Kurs5              Kurs18
-vorname169 nachname169                      Kurs16              Kurs18               Kurs3
+Liste der Schüler in Kurs: Kurs16                    Maximale Größe: 20 Anzahl der Schüler: 15
+vorname276 nachname276                   ZEHN              Kurs16               Kurs3              Kurs18
+vorname240 nachname240                   ZEHN              Kurs16              Kurs15               Kurs0
+vorname210 nachname210                   ZEHN              Kurs16              Kurs12               Kurs7
+vorname247 nachname247                   ZEHN              Kurs16              Kurs12              Kurs19
+vorname86 nachname86                     ACHT              Kurs16               Kurs0              Kurs18
+vorname179 nachname179                   NEUN              Kurs16              Kurs18              Kurs13
+vorname138 nachname138                   NEUN              Kurs16              Kurs10               Kurs4
+vorname196 nachname196                   NEUN              Kurs16              Kurs19              Kurs10
+vorname82 nachname82                     ACHT              Kurs16              Kurs12              Kurs15
+vorname32 nachname32                     ACHT              Kurs16               Kurs5               Kurs2
+vorname122 nachname122                   NEUN              Kurs16               Kurs1               Kurs9
+vorname168 nachname168                   NEUN              Kurs16              Kurs10              Kurs17
+vorname93 nachname93                     ACHT               Kurs5              Kurs16              Kurs18
+vorname17 nachname17                     ACHT              Kurs16               Kurs8              Kurs17
+vorname37 nachname37                     ACHT              Kurs16              Kurs12              Kurs18

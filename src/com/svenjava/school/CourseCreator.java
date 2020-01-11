@@ -113,10 +113,6 @@ public class CourseCreator {
 			}
 			
 		}
-		
-		
-		
-		
 //		old method, I might have to save for later...
 		
 //		for(int i = 0; i < schuelerList.size(); i++)

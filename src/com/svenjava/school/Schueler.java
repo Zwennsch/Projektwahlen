@@ -2,7 +2,7 @@ package com.svenjava.school;
 
 import java.util.List;
 
-public class Schueler {
+public class Schueler implements Comparable<Schueler>{
 	
 	protected static int totalNumber;
 	private int id;
@@ -101,6 +101,11 @@ public class Schueler {
 	public void setFinalCourse(Kurs finalCourse) {
 		
 		this.finalCourse = finalCourse;
+	}
+	@Override
+	public int compareTo(Schueler o) {
+		return this.getNachname().compareTo(o.getNachname());
+		
 	}
 	
 

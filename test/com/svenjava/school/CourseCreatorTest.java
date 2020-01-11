@@ -155,7 +155,8 @@ class CourseCreatorTest {
 		//make sure wishNotFullfilled is empty
 		assertTrue(CourseCreator.wishNotFullfilled.size()== 0);
 //		make sure, all students are distributed
-		CourseCreator.fillInStudentsDependingOnWish(CourseCreator.allStudents, CourseCreator.finalCoursestoFill);
+//		CourseCreator.fillInStudentsDependingOnWish(CourseCreator.allStudents, CourseCreator.finalCoursestoFill);
+		CourseCreator.calculateCourses();
 		int counter = 0;
 		for(Kurs c : CourseCreator.finalCoursestoFill) {
 			counter += c.getActualSize();
@@ -163,19 +164,16 @@ class CourseCreatorTest {
 		counter += CourseCreator.wishNotFullfilled.size();
 		assertEquals(numberStudents, counter);
 		
-		System.out.println(CourseCreator.wishNotFullfilled);
-		System.out.println("Anzahl der Schüler ohne erfolgreiche Zuordnung: "+CourseCreator.wishNotFullfilled.size());
-		System.out.println("Anzahl aller Schueler: " +Schueler.totalNumber);
-		int coursesFull = 0;
-		for(Kurs k : CourseCreator.finalCoursestoFill) {
-			if(k.isFull()) {
-				coursesFull++;
-				System.out.println(k.toString() + "; size: "+ k.getActualSize()+ "; maxSize: "+ k.getMaxSize());
-			}
-		}
-		System.out.println("Kurse voll besetzt: "+ coursesFull);
+		
 		try {
 			DataHandler.saveCourses(CourseCreator.finalCoursestoFill);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			DataHandler.saveFinalStudentList(CourseCreator.allStudents);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -184,14 +182,8 @@ class CourseCreatorTest {
 	}
 	
 
-	@Test
-	@Disabled
-	void testCourseCreator() {
-		for(Schueler s : schuelerList) {
-			System.out.println(s + " ;" +s.getKlassenstufe()+ " ;"+ s.getWahl());
-		}
-		System.out.println(schuelerList.get(20).getKlassenstufe());
-	}
+	
+	
 
 	@Test
 	@Disabled
