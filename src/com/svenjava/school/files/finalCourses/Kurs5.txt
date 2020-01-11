@@ -1,12 +1,2 @@
-Liste der Schüler in Kurs: Kurs5                     Maximale Größe: 11 Anzahl der Schüler: 11
-vorname235 nachname235                   ZEHN               Kurs5              Kurs17               Kurs2
-vorname216 nachname216                   ZEHN               Kurs5               Kurs4               Kurs2
-vorname249 nachname249                   ZEHN               Kurs5              Kurs16              Kurs13
-vorname261 nachname261                   ZEHN               Kurs5              Kurs17              Kurs11
-vorname200 nachname200                   ZEHN               Kurs5               Kurs3              Kurs10
-vorname241 nachname241                   ZEHN               Kurs5               Kurs9              Kurs16
-vorname274 nachname274                   ZEHN               Kurs5              Kurs11               Kurs0
-vorname252 nachname252                   ZEHN               Kurs5               Kurs4               Kurs3
-vorname256 nachname256                   ZEHN               Kurs5              Kurs18              Kurs11
-vorname161 nachname161                   NEUN               Kurs5               Kurs8              Kurs18
-vorname183 nachname183                   NEUN               Kurs5               Kurs0              Kurs16
+Liste der Schüler in Kurs: Kurs5                     Maximale Größe: 19 Anzahl der Schüler:  1
+Hallo ich                                NEUN               Kurs5           Schwimmen   Jugend debattiert

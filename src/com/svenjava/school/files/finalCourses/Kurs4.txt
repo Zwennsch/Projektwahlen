@@ -1,18 +1,2 @@
-Liste der Schüler in Kurs: Kurs4                     Maximale Größe: 17 Anzahl der Schüler: 17
-vorname228 nachname228                   ZEHN               Kurs4              Kurs19               Kurs9
-vorname226 nachname226                   ZEHN               Kurs4               Kurs1               Kurs8
-vorname257 nachname257                   ZEHN               Kurs4               Kurs8               Kurs7
-vorname232 nachname232                   ZEHN               Kurs4              Kurs17               Kurs3
-vorname230 nachname230                   ZEHN               Kurs4              Kurs16              Kurs19
-vorname182 nachname182                   NEUN               Kurs4              Kurs14               Kurs5
-vorname4 nachname4                       ACHT               Kurs4              Kurs19               Kurs3
-vorname49 nachname49                     ACHT               Kurs4              Kurs12               Kurs0
-vorname136 nachname136                   NEUN               Kurs4              Kurs16              Kurs12
-vorname21 nachname21                     ACHT               Kurs4               Kurs3               Kurs0
-vorname59 nachname59                     ACHT               Kurs4              Kurs11               Kurs5
-vorname48 nachname48                     ACHT               Kurs4              Kurs16              Kurs11
-vorname25 nachname25                     ACHT               Kurs4              Kurs13               Kurs0
-vorname135 nachname135                   NEUN               Kurs4              Kurs15               Kurs0
-vorname124 nachname124                   NEUN               Kurs4               Kurs7              Kurs18
-vorname30 nachname30                     ACHT              Kurs15               Kurs4              Kurs19
-vorname137 nachname137                   NEUN               Kurs4              Kurs15              Kurs19
+Liste der Schüler in Kurs: Kurs4                     Maximale Größe: 16 Anzahl der Schüler:  1
+Tim Nummer3                              ACHT               Kurs4   Jugend debattiert               Kurs3

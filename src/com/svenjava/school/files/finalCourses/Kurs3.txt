@@ -1,18 +1,4 @@
-Liste der Schüler in Kurs: Kurs3                     Maximale Größe: 17 Anzahl der Schüler: 17
-vorname270 nachname270                   ZEHN               Kurs3               Kurs0               Kurs2
-vorname218 nachname218                   ZEHN               Kurs3               Kurs9               Kurs4
-vorname258 nachname258                   ZEHN               Kurs3              Kurs19              Kurs16
-vorname151 nachname151                   NEUN               Kurs3               Kurs6              Kurs18
-vorname129 nachname129                   NEUN               Kurs7               Kurs3              Kurs16
-vorname188 nachname188                   NEUN               Kurs9               Kurs2               Kurs3
-vorname23 nachname23                     ACHT               Kurs3               Kurs1              Kurs12
-vorname180 nachname180                   NEUN               Kurs3              Kurs18              Kurs13
-vorname51 nachname51                     ACHT               Kurs3              Kurs10               Kurs6
-vorname15 nachname15                     ACHT              Kurs14              Kurs15               Kurs3
-vorname34 nachname34                     ACHT               Kurs3              Kurs17              Kurs16
-vorname19 nachname19                     ACHT               Kurs7               Kurs3               Kurs9
-vorname22 nachname22                     ACHT               Kurs2               Kurs3              Kurs15
-vorname111 nachname111                   NEUN               Kurs3               Kurs0              Kurs18
-vorname139 nachname139                   NEUN               Kurs3               Kurs4               Kurs0
-vorname101 nachname101                   NEUN               Kurs1               Kurs3              Kurs17
-vorname9 nachname9                       ACHT               Kurs2               Kurs3              Kurs19
+Liste der Schüler in Kurs: Kurs3                     Maximale Größe: 15 Anzahl der Schüler:  3
+Justina HachJa                           NEUN               Kurs3               Kurs2           Mindstorm
+neuer Test                               ACHT               Kurs3           Mindstorm       Programmieren
+wieso genau                              ACHT               Kurs3           Schwimmen               Kurs2

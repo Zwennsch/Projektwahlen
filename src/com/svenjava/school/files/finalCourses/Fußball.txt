@@ -1,0 +1,2 @@
+Liste der Schüler in Kurs: Fußball                   Maximale Größe: 25 Anzahl der Schüler:  1
+Jannis Kannes                            ACHT             Fußball               Kurs3       Programmieren

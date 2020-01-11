@@ -50,6 +50,8 @@ public class Controller {
 		confirmed.setContentText("Nächste(r) Schüler(in) bitte!");
 		wrongEntry.setContentText("Bitte korrigieren Sie die Eingabe");
 		wrongEntry.setHeaderText("Eingabe fehlerhaft");
+		saveData.setHeaderText("Kurse wurden berechnet");
+		saveData.setContentText("Die Kurse wurden in Dateien gespeichert. Eingabe beendet.");
 	}
 	
 	@FXML
@@ -134,11 +136,11 @@ public class Controller {
 	@FXML
 	private void calculateCourses(ActionEvent e) throws IOException {
 		System.out.println("Calculating");
-		System.out.println(Schueler.alleSchueler.get(0));
 		new CourseCreator(Schueler.alleSchueler, FxMain.coursesList);
 		CourseCreator.calculateCourses();
 		DataHandler.saveCourses(CourseCreator.finalCoursestoFill);
 		DataHandler.saveFinalStudentList(CourseCreator.allStudents);
+		saveData.show();
 	}
 
 }

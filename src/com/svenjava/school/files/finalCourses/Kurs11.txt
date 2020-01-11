@@ -1,17 +1,1 @@
-Liste der Schüler in Kurs: Kurs11                    Maximale Größe: 16 Anzahl der Schüler: 16
-vorname217 nachname217                   ZEHN              Kurs11              Kurs19               Kurs2
-vorname221 nachname221                   ZEHN              Kurs11              Kurs18              Kurs14
-vorname295 nachname295                   ZEHN              Kurs11               Kurs5              Kurs18
-vorname236 nachname236                   ZEHN              Kurs11              Kurs13               Kurs4
-vorname91 nachname91                     ACHT              Kurs11              Kurs10              Kurs16
-vorname88 nachname88                     ACHT              Kurs11              Kurs10               Kurs9
-vorname38 nachname38                     ACHT              Kurs11               Kurs8              Kurs19
-vorname141 nachname141                   NEUN              Kurs11              Kurs15              Kurs13
-vorname7 nachname7                       ACHT               Kurs5              Kurs11              Kurs18
-vorname45 nachname45                     ACHT               Kurs5              Kurs11               Kurs9
-vorname55 nachname55                     ACHT              Kurs11              Kurs16               Kurs7
-vorname60 nachname60                     ACHT              Kurs13              Kurs11              Kurs18
-vorname39 nachname39                     ACHT               Kurs9              Kurs11               Kurs4
-vorname11 nachname11                     ACHT              Kurs11               Kurs8               Kurs2
-vorname194 nachname194                   NEUN              Kurs13               Kurs4              Kurs11
-vorname29 nachname29                     ACHT               Kurs1               Kurs4              Kurs11
+Liste der Schüler in Kurs: Kurs11                    Maximale Größe: 10 Anzahl der Schüler:  0

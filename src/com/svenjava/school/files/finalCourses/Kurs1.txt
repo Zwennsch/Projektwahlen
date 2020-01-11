@@ -1,16 +1,4 @@
-Liste der Schüler in Kurs: Kurs1                     Maximale Größe: 15 Anzahl der Schüler: 15
-vorname211 nachname211                   ZEHN               Kurs1              Kurs16              Kurs11
-vorname222 nachname222                   ZEHN               Kurs1               Kurs8              Kurs19
-vorname253 nachname253                   ZEHN               Kurs1              Kurs13              Kurs15
-vorname260 nachname260                   ZEHN               Kurs1               Kurs3              Kurs14
-vorname262 nachname262                   ZEHN               Kurs1               Kurs5              Kurs19
-vorname266 nachname266                   ZEHN               Kurs1              Kurs19               Kurs5
-vorname78 nachname78                     ACHT               Kurs1              Kurs14              Kurs15
-vorname66 nachname66                     ACHT               Kurs1               Kurs5              Kurs11
-vorname69 nachname69                     ACHT               Kurs1               Kurs9              Kurs14
-vorname133 nachname133                   NEUN               Kurs1              Kurs15               Kurs9
-vorname142 nachname142                   NEUN               Kurs1              Kurs17               Kurs2
-vorname99 nachname99                     ACHT               Kurs1              Kurs19              Kurs13
-vorname105 nachname105                   NEUN               Kurs1              Kurs10               Kurs2
-vorname125 nachname125                   NEUN               Kurs1              Kurs12               Kurs5
-vorname31 nachname31                     ACHT               Kurs1              Kurs18               Kurs6
+Liste der Schüler in Kurs: Kurs1                     Maximale Größe: 20 Anzahl der Schüler:  3
+Justus Schrader                          NEUN               Kurs1       Programmieren             Fußball
+jetztmit linebreak                       NEUN               Kurs1               Kurs4       Programmieren
+jetzt nochmal                            NEUN               Kurs1               Kurs2               Kurs3
