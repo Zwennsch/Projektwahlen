@@ -113,6 +113,7 @@ public class DataHandler {
 		for(Kurs course: courses) {
 			saveCourse(pathToFinalCourses, course);
 		}
+//		creates a course with size = allStudents.size() so that it's big enough just in case
 		Kurs withoutWish = new Kurs("OhneWunsch", CourseCreator.allStudents.size());
 		CourseCreator.wishNotFullfilled.stream()
 			.forEach(s -> withoutWish.addSchuelerToKurs(s));

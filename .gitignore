@@ -109,9 +109,22 @@ studentList.txt
 # vscode files
 .vscode/
 
+# intellij files
+.idea/
+*.idea
+
 # created courses folder
-/home/sven/git/Projektwahlen/src/com/svenjava/school/files/finalCourses/
+src/
+com/
+svenjava/
+school/
+files/
+finalCourses/
+*.txt
+
 /home/sven/git/Projektwahlen/bin/com/svenjava/school/files/finalCourses/
+*.*
+
 
 # End of https://www.gitignore.io/api/java,eclipse
 
